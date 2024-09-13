@@ -1,15 +1,26 @@
 .form-container {
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     position: relative;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), /* Más transparencia negra */
                 url('/assets/fondo_login.webp') no-repeat center center fixed; /* Imagen de fondo */
     background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
-    padding: 2rem;
+    height: 100vh;
+    padding-bottom: 5rem;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Agrega un poco más de sombra */
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.responsive {
+    padding: 1rem;
+
 }
 
 h2 {
@@ -25,8 +36,7 @@ form {
     padding: 2.5rem; /* Aumenta el padding para mayor espacio */
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Sombra más suave */
-    max-width: 420px;
-    width: 100%;
+    
 }
 
 label {
@@ -38,7 +48,7 @@ label {
 
 input,
 select {
-    width: 100%;
+    
     padding: 0.85rem;
     border: 1px solid #3498db; /* Azul más fuerte para el borde */
     border-radius: 6px; /* Bordes más redondeados */
