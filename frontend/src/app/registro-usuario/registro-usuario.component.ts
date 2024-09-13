@@ -1,6 +1,6 @@
-// src/app/registro-usuario/registro-usuario.component.ts
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // Importar Router
+import { NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-registro-usuario',
@@ -8,31 +8,40 @@ import { Router } from '@angular/router'; // Importar Router
   styleUrls: ['./registro-usuario.component.css']
 })
 export class RegistroUsuarioComponent {
-  // Propiedad usuario con los campos del formulario
   usuario = {
+    id_usuario: '',
     nombre: '',
-    correo: '',
+    email: '',
     password: '',
-    tipoUsuario: '' // Eliminamos el campo placa porque ya no está en el formulario
+    telefono: '',
+    tipo_usuario: ''
   };
 
-  // Inyección del Router en el constructor
-  constructor(private router: Router) {}
+  constructor(private http: HttpClient) {}
 
-  // Maneja el envío del formulario
-  onSubmit(form: any) {
+  onSubmit(form: NgForm) {
+    //console.log('Datos del formulario:', this.usuario); // Imprime los datos en la consola
+
     if (form.valid) {
-      console.log('Formulario Enviado:', this.usuario);
-      alert('Usuario registrado con éxito');
-      // Aquí puedes agregar lógica adicional si lo deseas
+      this.http.post('http://localhost:3000/usuarios', this.usuario)
+        .subscribe(
+          response => {
+            console.log('Respuesta del servidor:', response);
+            alert('Usuario registrado correctamente');
+            form.resetForm();
+          },
+          error => {
+            console.error('Error al registrar usuario:', error);
+            alert('Ocurrió un error al registrar el usuario');
+          }
+        );
     } else {
       console.log('Formulario inválido');
-      alert('Formulario inválido');
+      alert('Por favor, llena todos los campos');
     }
   }
 
-  // Método para regresar a la página principal
   regresar() {
-    this.router.navigate(['/']); // Navega a la ruta raíz o la página principal
+    // Lógica para regresar a la página principal
   }
 }
