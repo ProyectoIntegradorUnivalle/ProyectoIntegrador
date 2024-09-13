@@ -1,0 +1,102 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), /* Más transparencia negra */
+                url('/assets/fondo_login.webp') no-repeat center center fixed; /* Imagen de fondo */
+    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+    padding: 2rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Agrega un poco más de sombra */
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem; /* Aumenta un poco el tamaño de la fuente */
+    color: #f1c40f; /* Color amarillo brillante, inspirado en un tema automotriz */
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+form {
+    background: rgba(255, 255, 255, 0.95); /* Más transparencia para resaltar el fondo */
+    padding: 2.5rem; /* Aumenta el padding para mayor espacio */
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Sombra más suave */
+    max-width: 420px;
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.75rem; /* Más espacio entre etiquetas */
+    font-weight: bold;
+    color: #2980b9; /* Azul más fuerte */
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.85rem;
+    border: 1px solid #3498db; /* Azul más fuerte para el borde */
+    border-radius: 6px; /* Bordes más redondeados */
+    font-size: 1rem;
+    background-color: #f9f9f9; /* Fondo más suave */
+}
+
+input:focus,
+select:focus {
+    border-color: #1abc9c; /* Verde agua en el focus */
+    outline: none;
+    box-shadow: 0 0 10px rgba(26, 188, 156, 0.5); /* Brillo verde agua */
+}
+
+.error-message {
+    color: #e74c3c; /* Rojo fuerte para los mensajes de error */
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+button.submit-button {
+    background-color: #27ae60; /* Verde fuerte para el botón de enviar */
+    color: white;
+    border: none;
+    padding: 0.85rem;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+button.submit-button:hover {
+    background-color: #229954; /* Verde más oscuro al hacer hover */
+}
+
+button.back-button {
+    background-color: #229954; /* Azul fuerte para el botón de regresar */
+    color: white;
+    border: none;
+    padding: 0.85rem;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-bottom: 1.5rem; /* Más espacio debajo del botón */
+    transition: background-color 0.3s ease;
+}
+
+button.back-button:hover {
+    background-color: #1f6396; /* Azul más oscuro al hacer hover */
+}
+
+select {
+    appearance: none;
+    background-color: #f9f9f9;
+    background-image: linear-gradient(45deg, transparent 50%, #1abc9c 50%); /* Verde agua para el ícono de dropdown */
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+    background-size: 1rem 1rem;
+}

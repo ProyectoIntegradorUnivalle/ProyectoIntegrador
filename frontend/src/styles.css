@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+/* src/styles.css */
+
+/* Aplica la fuente a toda la aplicación */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+  }
+
+  

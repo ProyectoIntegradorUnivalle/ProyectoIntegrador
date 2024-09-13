@@ -1,0 +1,46 @@
+<!-- src/app/registro-usuario/registro-usuario.component.html -->
+<div class="form-container">
+  <!-- Botón para regresar a la página principal -->
+  <button (click)="regresar()" class="back-button">Regresar a la Página Principal</button>
+
+  <h2>Registro de Usuario - Lava-Wash</h2>
+  <form #formRegistro="ngForm" (ngSubmit)="onSubmit(formRegistro)">
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input id="nombre" name="nombre" [(ngModel)]="usuario.nombre" required minlength="3">
+      <div *ngIf="formRegistro.submitted && !formRegistro.form.controls['nombre']?.valid" class="error-message">
+        El nombre es requerido y debe tener al menos 3 caracteres.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="correo">Correo Electrónico:</label>
+      <input id="correo" name="correo" [(ngModel)]="usuario.correo" required email>
+      <div *ngIf="formRegistro.submitted && !formRegistro.form.controls['correo']?.valid" class="error-message">
+        Introduce un correo válido.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" [(ngModel)]="usuario.password" required minlength="6">
+      <div *ngIf="formRegistro.submitted && !formRegistro.form.controls['password']?.valid" class="error-message">
+        La contraseña es requerida y debe tener al menos 6 caracteres.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="tipoUsuario">Tipo de Usuario:</label>
+      <select id="tipoUsuario" name="tipoUsuario" [(ngModel)]="usuario.tipoUsuario" required>
+        <option value="" disabled selected>Selecciona un tipo</option>
+        <option value="empresa">Empresa</option>
+        <option value="persona">Persona</option>
+      </select>
+      <div *ngIf="formRegistro.submitted && !formRegistro.form.controls['tipoUsuario']?.valid" class="error-message">
+        El tipo de usuario es requerido.
+      </div>
+    </div>
+
+    <button type="submit" class="submit-button">Registrar</button>
+  </form>
+</div>
