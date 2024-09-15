@@ -4,21 +4,17 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-registro-usuario',
-  templateUrl: './registro-usuario.component.html',
-  styleUrls: ['./registro-usuario.component.css']
+  selector: 'app-inicio-usuario',
+  templateUrl: './inicio-usuario.component.html',
+  styleUrl: './inicio-usuario.component.css'
 })
-export class RegistroUsuarioComponent {
+export class InicioUsuarioComponent {
   usuario = {
     id_usuario: '',
-    nombre: '',
-    email: '',
     password: '',
-    telefono: '',
-    tipo_usuario: ''
   };
 
-  constructor(private http: HttpClient, public dialogRef?: MatDialogRef<RegistroUsuarioComponent>) {}
+  constructor(private http: HttpClient, public dialogRef?: MatDialogRef<InicioUsuarioComponent>) {}
 
   onSubmit(form: NgForm) {
     if (form.valid) {
@@ -45,5 +41,4 @@ export class RegistroUsuarioComponent {
     this.dialogRef?.close();  // Cerrar el modal cuando el usuario cancela el registro
   }
 
-  
 }

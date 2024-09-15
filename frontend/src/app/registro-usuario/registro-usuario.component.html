@@ -1,11 +1,14 @@
-<!-- src/app/registro-usuario/registro-usuario.component.html -->
-<div class="form-container">
-  <!-- Botón para regresar a la página principal -->
-  
-  <div class = "responsive">
-  <h2>Registro de Usuario - LAVA - WASH</h2>
+<div class="contenedor-general-registro">
+
+  <div class="modal-header-Registro">
+    <!-- Aquí debería estar la etiqueta de cierre de modal-header -->
+    <button type="button" class="close-button" (click)="onCancel()">
+      <img src="assets/icons/xmark-svgrepo-com.svg" alt="Cerrar">
+    </button>
+  </div> <!-- Cierre correcto del modal-header -->
+
   <form #formRegistro="ngForm" (ngSubmit)="onSubmit(formRegistro)">
-    
+    <h1>Crear cuenta en LavaWash</h1>
     <div class="form-group">
       <label for="usuario">Usuario:</label>
       <input id="usuario" name="usuario" [(ngModel)]="usuario.id_usuario" required minlength="3">
@@ -13,8 +16,6 @@
         El nombre es requerido y debe tener al menos 3 caracteres.
       </div>
     </div>
-  
-
 
     <div class="form-group">
       <label for="nombre">Nombre:</label>
@@ -56,7 +57,12 @@
       </div>
     </div>
 
-    <button type="submit" class="submit-button">Registrar</button>
+    <div class="button-group">
+      <button type="submit" class="submit-button" [disabled]="formRegistro.invalid"
+        [ngClass]="{'disabled-button': formRegistro.invalid, 'active-button': formRegistro.valid}">
+        Registrarse
+      </button>
+    </div>
+
   </form>
-  </div>
-</div>
+</div> <!-- Cierre correcto del contenedor general -->
