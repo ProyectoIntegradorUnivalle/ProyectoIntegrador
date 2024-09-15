@@ -16,26 +16,27 @@ export class InicioUsuarioComponent {
 
   constructor(private http: HttpClient, public dialogRef?: MatDialogRef<InicioUsuarioComponent>) {}
 
-  onSubmit(form: NgForm) {
-    if (form.valid) {
-      this.http.post('http://localhost:3000/usuarios', this.usuario)
+    onSubmit(form: NgForm) {
+      if (form.valid) {
+        // Hacemos una solicitud POST al backend para verificar las credenciales
+        this.http.post('http://localhost:3000/login', this.usuario)
         .subscribe(
           response => {
             console.log('Respuesta del servidor:', response);
-            alert('Usuario registrado correctamente');
+            alert('inicio de sesión exitoso');
             this.dialogRef?.close();  // Cerrar el modal después de un registro exitoso
             form.resetForm();  // Reiniciar el formulario después del envío
           },
           error => {
-            console.error('Error al registrar usuario:', error);
-            alert('Ocurrió un error al registrar el usuario');
+            console.error('Error al inciar sesion:', error);
+            alert('Ocurrió un error al iniciar sesion el usuario');
           }
         );
-    } else {
-      console.log('Formulario inválido');
-      alert('Por favor, llena todos los campos');
+      } else {
+        console.log('Formulario inválido');
+        alert('Por favor, completa todos los campos correctamente');
+      }
     }
-  }
 
   onCancel(): void {
     this.dialogRef?.close();  // Cerrar el modal cuando el usuario cancela el registro

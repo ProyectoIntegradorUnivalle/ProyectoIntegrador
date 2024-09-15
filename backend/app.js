@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 });
 
 
-// Ruta para obtener usuarios
+//Ruta para obtener usuarios
 app.get('/usuarios', (req, res) => {
     db.query('SELECT * FROM usuarios', (err, results) => {
         if (err) {
@@ -47,6 +47,26 @@ app.post('/usuarios', (req, res) => {
     });
 });
 
+//ruta para iniciar sesion con usuario y contraseña
+app.post('/login', (req, res) => {
+    console.log(req.body); // Para depuración
+    const { id_usuario, password } = req.body;
+
+    if (!id_usuario || !password) {
+        return res.status(400).json({ error: 'Todos los campos son requeridos' });
+    }
+
+    const query = 'SELECT * FROM Usuarios WHERE id_usuario = ? AND password = ?';
+    db.query(query, [id_usuario, password], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+        if (results.length === 0) {
+            return res.status(401).json({ error: 'Usuario o contraseña incorrectos' });
+        }
+        res.status(201).json({ message: 'Inicio de sesión exitoso', usuario: results[0] });
+    });
+}); 
 
 // Configura el puerto
 const PORT = process.env.PORT || 3000;
