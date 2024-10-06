@@ -1,0 +1,35 @@
+<div class="page">
+    <div id="home">
+        <header class="main-header">
+    
+            <div class="header-container" >
+                <img src="assets\images\logo.png" alt="Logo de la empresa minimalista" class="logoEmpresaMinimalista">
+                <nav class="nav-menu">
+                    <a href="/home-inicio-registro">Inicio</a>
+                    <a href="">Lavado de Autos</a>
+                    <a href="">Lavado Interior</a>
+                    <a href="">Detailing</a>
+                    <a href="">Promociones</a>
+                    <a href="">Blog</a>
+                </nav>
+            </div>
+        </header>
+        <div>
+            <swiper-container>
+                <swiper-slide *ngFor="let image of sliderImages; let i = index">
+                  <div class="image-container">
+                    <img [src]="image" alt="Imagen del Swiper">
+                    <!-- Contenedor del texto -->
+                    <div class="text-overlay">{{ sliderTexts[i] }}</div>
+                  </div>
+                </swiper-slide>
+              </swiper-container>
+              
+        </div>
+
+        
+    </div>
+</div>
+
+
+  

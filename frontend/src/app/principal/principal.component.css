@@ -1,0 +1,118 @@
+/* Estilos para el header */
+.main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #038CBA; /* Color de fondo del header */
+    padding: 10px 0;
+    z-index: 1000; /* Asegura que el header esté encima del resto del contenido */
+    display: flex;
+    justify-content: center; /* Centramos el contenido del header */
+    align-items: center;
+}
+
+/* Contenedor para centrar logo y menú */
+.header-container {
+    width: auto; /* Deja que el contenedor se ajuste automáticamente */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;
+    text-align: center;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 50px; /* Espaciado entre los enlaces, ajusta según sea necesario */
+    justify-content: center; /* Asegura que los enlaces estén centrados */
+}
+
+.nav-menu a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-menu a:hover {
+    color: #00aaff; /* Color de hover para los links */
+}
+
+/* Ajusta el contenido para no superponerse al header */
+body {
+    padding-top: 80px; /* Ajusta este valor dependiendo de la altura del header */
+}
+
+.logoEmpresaMinimalista {
+    max-height: 85px; 
+    margin-right: 50px;
+  }
+
+/* Contenedor del swiper */
+swiper-container {
+    width: 100%;
+    height: auto; /* Ajusta la altura según el contenido */
+    max-height: 500px; /* Establece una altura máxima para evitar desbordamiento vertical */
+    margin: 0 auto; /* Centrar el swiper horizontalmente */
+  }
+  
+  /* Estilos para las imágenes dentro del swiper */
+  swiper-slide img {
+    width: 100%;
+    height: auto; /* Ajusta la altura de forma proporcional a la imagen */
+    max-height: 960px; /* Asegura que las imágenes no superen esta altura */
+    object-fit: contain; /* Asegura que la imagen se ajuste sin ser recortada */
+    border-radius: 10px; /* Da un ligero redondeado a las esquinas de las imágenes */
+  }
+  
+  /* Opcional: Estilos para las flechas de navegación */
+  .swiper-button-next, .swiper-button-prev {
+    color: #fff; /* Color blanco para las flechas de navegación */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    border-radius: 50%; /* Redondea las flechas */
+    padding: 10px; /* Añade espacio alrededor de las flechas */
+  }
+  
+  /* Opcional: Estilos para las bolitas de paginación */
+  .swiper-pagination-bullet {
+    background: #00aaff; /* Cambia el color de las bolitas de paginación */
+  }
+  
+  .swiper-pagination-bullet-active {
+    background: #fff; /* Cambia el color de la bolita activa */
+  }
+  
+/* Estilos para el contenedor de la imagen */
+/* Estilos para el contenedor de la imagen */
+.image-container {
+    position: relative; /* Necesario para que el texto se superponga a la imagen */
+    width: 100%;
+    height: auto;
+  }
+
+  /* Estilos para el texto superpuesto en el centro */
+  .text-overlay {
+    position: absolute;
+    top: 50%; /* Posiciona el texto en el 50% de la altura del contenedor */
+    left: 50%; /* Posiciona el texto en el 50% del ancho del contenedor */
+    transform: translate(-50%, -50%); /* Centra el texto completamente */
+    color: #000;
+    font-size: 72px;
+    line-height: 0.9;
+    font-weight: 405;
+    background-color: rgba(255, 255, 255, .85);
+    padding: 20px;
+    border-radius: 50px; /* Bordes redondeados */
+    text-align: center; /* Centra el texto horizontalmente */
+    width: auto; /* Permite que el ancho del fondo se ajuste al contenido */
+    
+  }
+  
+  /* Para textos responsivos en pantallas más pequeñas */
+  @media (max-width: 768px) {
+    .text-overlay {
+      font-size: 18px;
+    }
+  }
+  
+  
+  

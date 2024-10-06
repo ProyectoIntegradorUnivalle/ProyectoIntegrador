@@ -18,14 +18,14 @@ export class InicioUsuarioComponent {
 
     onSubmit(form: NgForm) {
       if (form.valid) {
-        // Hacemos una solicitud POST al backend para verificar las credenciales
+        
         this.http.post('http://localhost:3000/login', this.usuario)
         .subscribe(
           response => {
             console.log('Respuesta del servidor:', response);
             alert('inicio de sesión exitoso');
-            this.dialogRef?.close();  // Cerrar el modal después de un registro exitoso
-            form.resetForm();  // Reiniciar el formulario después del envío
+            this.dialogRef?.close();  
+            form.resetForm();  
           },
           error => {
             console.error('Error al inciar sesion:', error);
@@ -39,7 +39,7 @@ export class InicioUsuarioComponent {
     }
 
   onCancel(): void {
-    this.dialogRef?.close();  // Cerrar el modal cuando el usuario cancela el registro
+    this.dialogRef?.close(); 
   }
 
 }

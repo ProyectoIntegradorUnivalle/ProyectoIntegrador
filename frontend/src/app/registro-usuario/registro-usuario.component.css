@@ -23,39 +23,39 @@
 }
 
 form {
-    background: rgba(255, 255, 255, 0.95); /* Más transparencia para resaltar el fondo */
-    padding: 2.5rem; /* Aumenta el padding para mayor espacio */
+    background: rgba(255, 255, 255, 0.95); 
+    padding: 2.5rem; 
     border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Sombra más suave */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); 
 
 }
 
 label {
     display: block;
-    margin-bottom: 0.75rem; /* Más espacio entre etiquetas */
+    margin-bottom: 0.75rem; 
     font-weight: bold;
-    color: #2980b9; /* Azul más fuerte */
+    color: #2980b9; 
 }
 
 input,
 select {
     
     padding: 0.85rem;
-    border: 1px solid #3498db; /* Azul más fuerte para el borde */
-    border-radius: 6px; /* Bordes más redondeados */
+    border: 1px solid #3498db; 
+    border-radius: 6px; 
     font-size: 1rem;
-    background-color: #f9f9f9; /* Fondo más suave */
+    background-color: #f9f9f9; 
 }
 
 input:focus,
 select:focus {
-    border-color: #1abc9c; /* Verde agua en el focus */
+    border-color: #1abc9c; 
     outline: none;
-    box-shadow: 0 0 10px rgba(26, 188, 156, 0.5); /* Brillo verde agua */
+    box-shadow: 0 0 10px rgba(26, 188, 156, 0.5); 
 }
 
 .error-message {
-    color: #e74c3c; /* Rojo fuerte para los mensajes de error */
+    color: #e74c3c; 
     font-size: 0.85rem;
     margin-top: 0.5rem;
 }
@@ -72,29 +72,26 @@ select:focus {
     border-radius: 50px;
   }
   
-  /* Estilo cuando el formulario es válido */
   .active-button {
-    background-color: #038CBA; /* Verde fuerte */
+    background-color: #038CBA; 
     color: white;
   }
   
-  /* Efecto hover solo cuando el botón está habilitado */
   .active-button:hover {
-    background-color: rgb(25, 152, 230); /* Verde más oscuro en hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave al hacer hover */
+    background-color: rgb(25, 152, 230); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   }
   
-  /* Estilo cuando el formulario es inválido (botón deshabilitado) */
   .disabled-button {
-    background-color: #bdc3c7; /* Gris claro */
-    color: #7f8c8d; /* Texto más pálido */
-    cursor: not-allowed; /* Cambia el cursor a no permitido */
+    background-color: #bdc3c7; 
+    color: #7f8c8d; 
+    cursor: not-allowed; 
   }
 
 select {
     appearance: none;
     background-color: #f9f9f9;
-    background-image: linear-gradient(45deg, transparent 50%, #1abc9c 50%); /* Verde agua para el ícono de dropdown */
+    background-image: linear-gradient(45deg, transparent 50%, #1abc9c 50%); 
     background-repeat: no-repeat;
     background-position: right 0.85rem center;
     background-size: 1rem 1rem;
