@@ -29,12 +29,13 @@
 .nav-menu a {
     color: rgb(255, 255, 255);
     text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 400;
+    scroll-behavior: smooth;
 }
 
 .nav-menu a:hover {
-    color: #00aaff; /* Color de hover para los links */
+    color: #000; /* Color de hover para los links */
 }
 
 /* Ajusta el contenido para no superponerse al header */
@@ -51,7 +52,7 @@ body {
 swiper-container {
     width: 100%;
     height: auto; /* Ajusta la altura según el contenido */
-    max-height: 500px; /* Establece una altura máxima para evitar desbordamiento vertical */
+    max-height: 960px; /* Establece una altura máxima para evitar desbordamiento vertical */
     margin: 0 auto; /* Centrar el swiper horizontalmente */
   }
   
@@ -95,16 +96,26 @@ swiper-container {
     top: 50%; /* Posiciona el texto en el 50% de la altura del contenedor */
     left: 50%; /* Posiciona el texto en el 50% del ancho del contenedor */
     transform: translate(-50%, -50%); /* Centra el texto completamente */
-    color: #000;
+    color: #fff;
     font-size: 72px;
     line-height: 0.9;
     font-weight: 405;
-    background-color: rgba(255, 255, 255, .85);
+    background-color: rgba(3, 140, 186, .75);
     padding: 20px;
     border-radius: 50px; /* Bordes redondeados */
     text-align: center; /* Centra el texto horizontalmente */
     width: auto; /* Permite que el ancho del fondo se ajuste al contenido */
     
+  }
+
+  .text-overlay p {
+    font-size: 1.8rem;
+    margin-top: 25px;
+    text-align:center;
+    font-weight:bold;
+
+    color: #fff;
+  
   }
   
   /* Para textos responsivos en pantallas más pequeñas */
@@ -114,5 +125,89 @@ swiper-container {
     }
   }
   
-  
+/* Estilos para el botón */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #fff; /* Color de fondo del botón */
+  color: #038CBA; /* Color del texto */
+  font-size: 27px; /* Tamaño del texto */
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none; /* Eliminar subrayado */
+  border-radius: 50px; /* Bordes redondeados */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Animación suave */
+  width: 175px;
+}
+
+/* Efecto hover para el botón */
+.btn:hover {
+  background-color: #02688b; /* Color de fondo al pasar el ratón */
+  transform: scale(1.05); /* Ligero aumento del tamaño al hacer hover */
+  color: #fff;
+}
+
+/* Efecto de clic */
+.btn:active {
+  background-color: #014a5c; /* Color de fondo al hacer clic */
+  transform: scale(0.98); /* Ligero efecto de "presionado" */
+  color: #fff;
+}
+
+.about-us-section {
+  padding-top: 125px;
+  background-color: #fff;
+}
+
+.about-us-container {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about-text {
+  flex: 1;
+  padding-right: 20px;
+  max-width: 500px;
+  margin-left: 350px;
+  padding: 20px;
+  background-color: #038CBA;
+  border-radius: 50px;
+}
+
+.about-text h1 {
+  margin: 15px;
+  text-align: center;
+  padding: 15px;
+  font-size: 54px;
+  line-height: 0.9;
+  font-weight: bold;
+  color: #fff;
+}
+
+.about-text p {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+  text-justify: auto;
+  padding: 15px;
+  font-weight: 400;
+  line-height: 0.9;
+  color: #fff;
+  line-height: 1;
+}
+
+.about-image {
+  flex: 1;
+  text-align: center;
+}
+
+.about-image img {
+  width: 60%;
+  border-radius: 64px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  max-width: 550px;
+}
+
+
   

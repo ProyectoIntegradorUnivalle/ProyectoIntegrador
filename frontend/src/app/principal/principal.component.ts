@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 // import function to register Swiper custom elements
 import { register } from 'swiper/element/bundle';
 // register Swiper custom elements
 register();
+
 
 @Component({
   selector: 'app-principal',
@@ -18,10 +19,35 @@ export class PrincipalComponent {
   ]
 
   sliderTexts = [
-    "LAVADO Y DETALLADO DE AUTOS Y MUEBLES",
+    "LAVADO Y DETALLADO DE AUTOMOVILES",
     "EQUIPO CON EXPERIENCIA PROFESIONAL",
-    "MEJORES ACABADOS, MEJORES PRODUCTOS"
+    "MEJORES ACABADOS MEJORES PRODUCTOS"
   ];
+
+  sliderTextsP = [
+    "DALE DE NUEVO ESE LOOK A TU AUTO, EL TAMBIEN DEBE BRILLAR",
+    "SOMOS EL MEJOR EQUIPO CALIFICADO, SIEMPRE BRINDANDO EL MEJOR SEVICIO",
+    "NUESTROS PRODCUTOS SON DE ALTA CALIDAD"
+  ];
+
+  toInicio(){
+    document.getElementById("inicio")?.scrollIntoView({behavior:"smooth"})
+  }
+  toNosotros(){
+    document.getElementById("nosotros")?.scrollIntoView({behavior:"smooth"})
+  }
+  toServicios(){
+    document.getElementById("servicios")?.scrollIntoView({behavior:"smooth"})
+  }
+  toAgenda(){
+    document.getElementById("agenda")?.scrollIntoView({behavior:"smooth"})
+  }
+  toPromos(){
+    document.getElementById("promos")?.scrollIntoView({behavior:"smooth"})
+  }
+  toContacto(){
+    document.getElementById("contacto")?.scrollIntoView({behavior:"smooth"})
+  }
 
 }
 

@@ -1,35 +1,84 @@
 <div class="page">
     <div id="home">
         <header class="main-header">
-    
-            <div class="header-container" >
+
+            <div class="header-container">
                 <img src="assets\images\logo.png" alt="Logo de la empresa minimalista" class="logoEmpresaMinimalista">
                 <nav class="nav-menu">
-                    <a href="/home-inicio-registro">Inicio</a>
-                    <a href="">Lavado de Autos</a>
-                    <a href="">Lavado Interior</a>
-                    <a href="">Detailing</a>
-                    <a href="">Promociones</a>
-                    <a href="">Blog</a>
+                    <a (click)="toInicio()">INICIO</a>
+                    <a (click)="toNosotros()">SOBRE NOSOTROS</a>
+                    <a (click)="toServicios()">SERVICIOS</a>
+                    <a (click)="toAgenda()">AGENDAR CITA</a>
+                    <a (click)="toPromos()">PROMOCIONES</a>
+                    <a (click)="toContacto()">CONTACTANOS</a>
                 </nav>
             </div>
         </header>
-        <div>
-            <swiper-container>
+        <div id="inicio" class="inicio">
+            <swiper-container autoplay="true" loop="true" pagination="false" navigation="false" speed="1800"
+                loopPreventsSliding="true">
                 <swiper-slide *ngFor="let image of sliderImages; let i = index">
-                  <div class="image-container">
-                    <img [src]="image" alt="Imagen del Swiper">
-                    <!-- Contenedor del texto -->
-                    <div class="text-overlay">{{ sliderTexts[i] }}</div>
-                  </div>
+                    <div class="image-container">
+                        <img [src]="image" alt="Imagen del Swiper">
+                        <!-- Contenedor del texto -->
+                        <div class="text-overlay">
+                            {{ sliderTexts[i] }}
+                            <p>{{ sliderTextsP[i] }}</p>
+                            <a href="/home-inicio-registro" class="btn">UNETENOS</a>
+                        </div>
+                    </div>
                 </swiper-slide>
-              </swiper-container>
-              
+            </swiper-container>
+
         </div>
 
-        
+        <div id="nosotros" class="about-us-section">
+            <div class="about-us-container">
+                <div class="about-text">
+
+                    <h1>Bienvenido a LavaWash</h1>
+                    <p>
+                        Somos una empresa dedicada a ofrecer servicios de calidad en el lavado y detallado de vehículos.
+                        Nuestro objetivo es brindar la mejor experiencia a nuestros clientes, utilizando equipos de
+                        última tecnología y productos amigables con el medio ambiente.
+                    </p>
+                    <p>
+                        Desde nuestros inicios, hemos trabajado para posicionarnos como líderes en el mercado,
+                        ofreciendo
+                        no solo un servicio de lavado, sino una experiencia única.
+                    </p>
+
+                </div>
+                <div class="about-image">
+                    <img src="/assets/images/carro4.jpg" alt="Sobre nosotros imagen">
+                </div>
+            </div>
+        </div>
+
+        <div id="servicios" class="about-us-section">
+            <div class="about-us-container">
+                <div class="about-text">
+
+                    <h1>Bienvenido a LavaWash</h1>
+                    <p>
+                        Somos una empresa dedicada a ofrecer servicios de calidad en el lavado y detallado de vehículos.
+                        Nuestro objetivo es brindar la mejor experiencia a nuestros clientes, utilizando equipos de
+                        última tecnología y productos amigables con el medio ambiente.
+                    </p>
+                    <p>
+                        Desde nuestros inicios, hemos trabajado para posicionarnos como líderes en el mercado,
+                        ofreciendo
+                        no solo un servicio de lavado, sino una experiencia única.
+                    </p>
+
+                </div>
+                <div class="about-image">
+                    <img src="/assets/images/carro4.jpg" alt="Sobre nosotros imagen">
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
 </div>
-
-
-  
