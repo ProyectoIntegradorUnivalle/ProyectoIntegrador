@@ -39,12 +39,7 @@ export class PrincipalComponent {
   toServicios(){
     document.getElementById("servicios")?.scrollIntoView({behavior:"smooth"})
   }
-  toAgenda(){
-    document.getElementById("agenda")?.scrollIntoView({behavior:"smooth"})
-  }
-  toPromos(){
-    document.getElementById("promos")?.scrollIntoView({behavior:"smooth"})
-  }
+  
   toContacto(){
     document.getElementById("contacto")?.scrollIntoView({behavior:"smooth"})
   }

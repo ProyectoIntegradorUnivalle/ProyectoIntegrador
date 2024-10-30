@@ -3,28 +3,22 @@
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #038CBA; /* Color de fondo del header */
-    padding: 10px 0;
-    z-index: 1000; /* Asegura que el header esté encima del resto del contenido */
-    display: flex;
-    justify-content: center; /* Centramos el contenido del header */
-    align-items: center;
+    background-color: #038CBA;    padding: 10px 0;
+    z-index: 1000;     display: flex;
+    justify-content: center;     align-items: center;
+    cursor: pointer;
 }
 
 /* Contenedor para centrar logo y menú */
 .header-container {
-    width: auto; /* Deja que el contenedor se ajuste automáticamente */
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center;
+    width: auto;    display: flex;
+    justify-content: center;    align-items: center;
     text-align: center;
 }
 
 .nav-menu {
     display: flex;
-    gap: 50px; /* Espaciado entre los enlaces, ajusta según sea necesario */
-    justify-content: center; /* Asegura que los enlaces estén centrados */
-}
+    gap: 50px;    justify-content: center;}
 
 .nav-menu a {
     color: rgb(255, 255, 255);
@@ -35,12 +29,12 @@
 }
 
 .nav-menu a:hover {
-    color: #000; /* Color de hover para los links */
+    color: #000; 
 }
 
 /* Ajusta el contenido para no superponerse al header */
 body {
-    padding-top: 80px; /* Ajusta este valor dependiendo de la altura del header */
+    padding-top: 80px; 
 }
 
 .logoEmpresaMinimalista {
@@ -51,41 +45,41 @@ body {
 /* Contenedor del swiper */
 swiper-container {
     width: 100%;
-    height: auto; /* Ajusta la altura según el contenido */
-    max-height: 960px; /* Establece una altura máxima para evitar desbordamiento vertical */
-    margin: 0 auto; /* Centrar el swiper horizontalmente */
+    height: auto; 
+    max-height: 960px; 
+    margin: 0 auto; 
   }
   
   /* Estilos para las imágenes dentro del swiper */
   swiper-slide img {
     width: 100%;
-    height: auto; /* Ajusta la altura de forma proporcional a la imagen */
-    max-height: 960px; /* Asegura que las imágenes no superen esta altura */
-    object-fit: contain; /* Asegura que la imagen se ajuste sin ser recortada */
-    border-radius: 10px; /* Da un ligero redondeado a las esquinas de las imágenes */
+    height: auto; 
+    max-height: 960px; 
+    object-fit: contain; 
+    border-radius: 10px; 
   }
   
   /* Opcional: Estilos para las flechas de navegación */
   .swiper-button-next, .swiper-button-prev {
-    color: #fff; /* Color blanco para las flechas de navegación */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-    border-radius: 50%; /* Redondea las flechas */
-    padding: 10px; /* Añade espacio alrededor de las flechas */
+    color: #fff; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-radius: 50%; 
+    padding: 10px; 
   }
   
   /* Opcional: Estilos para las bolitas de paginación */
   .swiper-pagination-bullet {
-    background: #00aaff; /* Cambia el color de las bolitas de paginación */
+    background: #00aaff; 
   }
   
   .swiper-pagination-bullet-active {
-    background: #fff; /* Cambia el color de la bolita activa */
+    background: #fff; 
   }
   
 /* Estilos para el contenedor de la imagen */
-/* Estilos para el contenedor de la imagen */
+
 .image-container {
-    position: relative; /* Necesario para que el texto se superponga a la imagen */
+    position: relative; 
     width: 100%;
     height: auto;
   }
@@ -93,18 +87,18 @@ swiper-container {
   /* Estilos para el texto superpuesto en el centro */
   .text-overlay {
     position: absolute;
-    top: 50%; /* Posiciona el texto en el 50% de la altura del contenedor */
-    left: 50%; /* Posiciona el texto en el 50% del ancho del contenedor */
-    transform: translate(-50%, -50%); /* Centra el texto completamente */
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
     color: #fff;
     font-size: 72px;
     line-height: 0.9;
     font-weight: 405;
     background-color: rgba(3, 140, 186, .75);
     padding: 20px;
-    border-radius: 50px; /* Bordes redondeados */
-    text-align: center; /* Centra el texto horizontalmente */
-    width: auto; /* Permite que el ancho del fondo se ajuste al contenido */
+    border-radius: 50px; 
+    text-align: center; 
+    width: auto; 
     
   }
 
@@ -129,28 +123,28 @@ swiper-container {
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #fff; /* Color de fondo del botón */
-  color: #038CBA; /* Color del texto */
-  font-size: 27px; /* Tamaño del texto */
+  background-color: #fff; 
+  color: #038CBA; 
+  font-size: 27px; 
   font-weight: bold;
   text-align: center;
-  text-decoration: none; /* Eliminar subrayado */
-  border-radius: 50px; /* Bordes redondeados */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Animación suave */
+  text-decoration: none;
+  border-radius: 50px; 
+  transition: background-color 0.3s ease, transform 0.3s ease; 
   width: 175px;
 }
 
 /* Efecto hover para el botón */
 .btn:hover {
-  background-color: #02688b; /* Color de fondo al pasar el ratón */
-  transform: scale(1.05); /* Ligero aumento del tamaño al hacer hover */
+  background-color: #02688b; 
+  transform: scale(1.05); 
   color: #fff;
 }
 
 /* Efecto de clic */
 .btn:active {
-  background-color: #014a5c; /* Color de fondo al hacer clic */
-  transform: scale(0.98); /* Ligero efecto de "presionado" */
+  background-color: #014a5c; 
+  transform: scale(0.98); 
   color: #fff;
 }
 
@@ -209,5 +203,135 @@ swiper-container {
   max-width: 550px;
 }
 
+/* estilos para seccionServicios */
 
+.seccionServicios {
+  text-align: center;
+  background-color: #333;
+  color: white;
+  padding: 40px 20px;
+  height: 740px;
   
+}
+
+.seccionServicios h2 {
+  color: #fff;
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.seccionServicios p {
+  color: #ccc;
+  margin-bottom: 60px;
+  font-size: 1.3rem;
+  
+}
+
+.seccionServicios p span {
+  color: #0096FF;
+  font-weight: bold;
+}
+
+.servicioPanel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  
+}
+
+.servicioItem {
+  background-color: #444;
+  padding: 10px;
+  border-radius: 8px;
+  transition: transform 0.3s;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.servicioItem:hover {
+  transform: scale(1.05);
+}
+
+.servicioItem img {
+  width: 100%;
+  height: 360px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.servicioItem h3 {
+  color: white;
+  font-size: 1rem;
+  margin-top: 10px;
+  font-size: 1.5rem;
+}
+
+.pieServicio{
+  background-color: #333;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.pieServicio p{
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+}
+
+/* Estilos para el footer */
+
+.seccionContacto {
+  text-align: center;
+  background-color: #333; 
+  color: black; 
+  padding: 40px 20px;
+  box-sizing: border-box; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+}
+.contactoContainer {
+  max-width: 1200px; 
+  width: 100%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.contactoText {
+  margin-bottom: 30px;
+}
+
+.contactoText h2 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 2rem;
+  margin-top: 0; 
+}
+
+.contactoText p {
+  color: #ccc;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+.redesSociales {
+  display: flex;
+  gap: 20px; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+.redesSociales a {
+  color: #0096FF;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+
+.redesSociales a:hover {
+  color: #fff; 
+}
