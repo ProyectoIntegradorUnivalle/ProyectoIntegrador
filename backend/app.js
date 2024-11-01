@@ -3,33 +3,72 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const db = require('./db');
-
+const nodemailer = require('nodemailer');
+const crypto = require('crypto');
 
 app.use(express.json());
 
-app.use(cors());
-app.use(cors({
-    origin: 'http://localhost:4200'
-}));
+let verificationCodes = {}; // Almacenar los códigos de verificación temporalmente
 
-// Ruta de prueba
-app.get('/', (req, res) => {
-    res.send('¡Hola nueva bassssse');
-});
+// Ruta para enviar el código de verificación
+app.post('/send-code', (req, res) => {
+    const { email } = req.body;
+    if (!email) {
+        return res.status(400).json({ error: 'El correo electrónico es requerido' });
+    }
 
+    const code = crypto.randomBytes(3).toString('hex'); // Generar un código aleatorio
+    verificationCodes[email] = code;
 
-//Ruta para obtener usuarios
-app.get('/usuarios', (req, res) => {
-    db.query('SELECT * FROM usuarios', (err, results) => {
-        if (err) {
-            return res.status(500).json({ error: err.message });
+    // Configurar el transporte de nodemailer
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'tu-email@gmail.com',
+            pass: 'tu-contraseña'
         }
-        res.json(results);
+    });
+
+    const mailOptions = {
+        from: 'tu-email@gmail.com',
+        to: email,
+        subject: 'Código de verificación',
+        text: `Tu código de verificación es: ${code}`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return res.status(500).json({ error: error.toString() });
+        }
+        res.status(200).json({ message: 'Código enviado' });
     });
 });
 
-// Ruta para agregar un nuevo usuario
-app.post('/usuarios', (req, res) => {
+// Ruta para verificar el código y actualizar la contraseña
+app.post('/verify-code', (req, res) => {
+    const { email, code, newPassword } = req.body;
+    if (!email || !code || !newPassword) {
+        return res.status(400).json({ error: 'Todos los campos son requeridos' });
+    }
+
+    if (verificationCodes[email] === code) {
+        // Aquí deberías actualizar la contraseña en tu base de datos
+        const query = 'UPDATE Usuarios SET password = ? WHERE email = ?';
+        db.query(query, [newPassword, email], (err, results) => {
+            if (err) {
+                return res.status(500).json({ error: err.message });
+            }
+            // Eliminar el código de verificación después de usarlo
+            delete verificationCodes[email];
+            res.status(200).json({ message: 'Contraseña actualizada' });
+        });
+    } else {
+        res.status(400).json({ error: 'Código de verificación incorrecto' });
+    }
+});
+
+// Ruta para crear un nuevo usuario
+app.post('/register', (req, res) => {
     console.log(req.body); // Para depuración
 
     const { id_usuario, nombre, email, password, telefono, tipo_usuario } = req.body;
@@ -47,13 +86,13 @@ app.post('/usuarios', (req, res) => {
     });
 });
 
-//ruta para iniciar sesion con usuario y contraseña
+// Ruta para iniciar sesión con usuario y contraseña
 app.post('/login', (req, res) => {
     console.log(req.body); // Para depuración
     const { id_usuario, password } = req.body;
 
     if (!id_usuario || !password) {
-        return res.status(400).json({ error: 'Todos los campos son requeridos' });
+        return res.status(400).json({ error: 'Usuario y contraseña son requeridos' });
     }
 
     const query = 'SELECT * FROM Usuarios WHERE id_usuario = ? AND password = ?';
@@ -61,15 +100,14 @@ app.post('/login', (req, res) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        if (results.length === 0) {
-            return res.status(401).json({ error: 'Usuario o contraseña incorrectos' });
+        if (results.length > 0) {
+            res.status(200).json({ message: 'Inicio de sesión exitoso' });
+        } else {
+            res.status(400).json({ error: 'Usuario o contraseña incorrectos' });
         }
-        res.status(201).json({ message: 'Inicio de sesión exitoso', usuario: results[0] });
     });
-}); 
+});
 
-// Configura el puerto
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
+app.listen(3000, () => {
+    console.log('Servidor escuchando en el puerto 3000');
 });
