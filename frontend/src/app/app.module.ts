@@ -12,6 +12,7 @@ import { HomeInicioComponent } from './home-inicio/home-inicio.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PrincipalComponent } from './principal/principal.component';
+import { OlvidarFormularioComponent } from './olvidar-formulario/olvidar-formulario.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PrincipalComponent } from './principal/principal.component';
     RegistroUsuarioComponent,
     InicioUsuarioComponent,
     HomeInicioComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    OlvidarFormularioComponent
 
   ],
   imports: [
