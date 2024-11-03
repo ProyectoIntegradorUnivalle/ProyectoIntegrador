@@ -8,10 +8,17 @@ const crypto = require('crypto');
 
 app.use(express.json());
 
+app.use(cors({
+    origin: 'http://localhost:4200'
+}));
+
 let verificationCodes = {}; // Almacenar los códigos de verificación temporalmente
 
+
+
 // Ruta para enviar el código de verificación
-app.post('/send-code', (req, res) => {
+app.post('/send_code', (req, res) => {
+    console.log("entro"); // Para depuración
     const { email } = req.body;
     if (!email) {
         return res.status(400).json({ error: 'El correo electrónico es requerido' });
@@ -24,13 +31,13 @@ app.post('/send-code', (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'tu-email@gmail.com',
-            pass: 'tu-contraseña'
+            user: 'pruebitapruebacorreo@gmail.com',
+            pass: 'twbulmuiakgemaut'
         }
     });
 
     const mailOptions = {
-        from: 'tu-email@gmail.com',
+        from: 'pruebitapruebacorreo@gmail.com',
         to: email,
         subject: 'Código de verificación',
         text: `Tu código de verificación es: ${code}`
@@ -46,6 +53,8 @@ app.post('/send-code', (req, res) => {
 
 // Ruta para verificar el código y actualizar la contraseña
 app.post('/verify-code', (req, res) => {
+
+    console.log("entro"); // Para depuración
     const { email, code, newPassword } = req.body;
     if (!email || !code || !newPassword) {
         return res.status(400).json({ error: 'Todos los campos son requeridos' });

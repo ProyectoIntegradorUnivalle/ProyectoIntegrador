@@ -8,6 +8,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './olvidar-formulario.component.html',
   styleUrl: './olvidar-formulario.component.css'
 })
+
 export class OlvidarFormularioComponent {
 
   mostrarFormulario = true;
@@ -19,7 +20,7 @@ export class OlvidarFormularioComponent {
   constructor(private http: HttpClient, public dialogRef?: MatDialogRef<OlvidarFormularioComponent>) {}
   
   enviarCodigo() {
-    this.http.post('/send-code', { email: this.email }).subscribe(response => {
+    this.http.post('http://localhost:3000/send_code', { email: this.email }).subscribe(response => {
       console.log('Código enviado');
       this.mostrarFormulario = false;
       this.mostrarFormularioCodigo = true;
@@ -27,7 +28,7 @@ export class OlvidarFormularioComponent {
   }
 
   verificarCodigo() {
-    this.http.post('/verify-code', { email: this.email, code: this.codigo, newPassword: this.newPassword }).subscribe(response => {
+    this.http.post('http://localhost:3000/verify-code', { email: this.email, code: this.codigo, newPassword: this.newPassword }).subscribe(response => {
       console.log('Contraseña actualizada');
       this.mostrarFormularioCodigo = false;
     });

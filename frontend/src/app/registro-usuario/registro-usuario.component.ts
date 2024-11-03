@@ -22,7 +22,7 @@ export class RegistroUsuarioComponent {
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      this.http.post('http://localhost:3000/usuarios', this.usuario)
+      this.http.post('http://localhost:3000/register', this.usuario)
         .subscribe(
           response => {
             console.log('Respuesta del servidor:', response);
