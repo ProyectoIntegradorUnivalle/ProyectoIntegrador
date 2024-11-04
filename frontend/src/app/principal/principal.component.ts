@@ -30,18 +30,22 @@ export class PrincipalComponent {
     "NUESTROS PRODCUTOS SON DE ALTA CALIDAD"
   ];
 
-  toInicio(){
-    document.getElementById("inicio")?.scrollIntoView({behavior:"smooth"})
+  toInicio() {
+    document.getElementById("inicio")?.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("menu-movil")?.click();
   }
-  toNosotros(){
-    document.getElementById("nosotros")?.scrollIntoView({behavior:"smooth"})
+  toNosotros() {
+    document.getElementById("nosotros")?.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("menu-movil")?.click();
   }
-  toServicios(){
-    document.getElementById("servicios")?.scrollIntoView({behavior:"smooth"})
+  toServicios() {
+    document.getElementById("servicios")?.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("menu-movil")?.click();
   }
-  
-  toContacto(){
-    document.getElementById("contacto")?.scrollIntoView({behavior:"smooth"})
+
+  toContacto() {
+    document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("menu-movil")?.click();
   }
 
 }

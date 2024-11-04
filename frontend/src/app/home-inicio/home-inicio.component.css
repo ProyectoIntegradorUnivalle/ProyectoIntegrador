@@ -70,6 +70,16 @@ body {
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
+.botonOlvidar .botonHome {
+  background-color: #333;
+  color: #ffffff;
+}
+
+.botonOlvidar .botonHome:hover {
+  background-color: #6c6c6c;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
 h1 {
   font-size: 4.5rem;
   font-weight: 700;

@@ -1,35 +1,50 @@
+
+
+
 /* Estilos para el header */
 .main-header {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #038CBA;    padding: 10px 0;
-    z-index: 1000;     display: flex;
-    justify-content: center;     align-items: center;
+    background-color: #038CBA !important;    
+    padding: 10px 0;
+    z-index: 1000;     
     cursor: pointer;
 }
 
 /* Contenedor para centrar logo y menú */
 .header-container {
-    width: auto;    display: flex;
-    justify-content: center;    align-items: center;
+    width: auto;    
+    display: flex;
+    justify-content: center;    
+    align-items: center;
     text-align: center;
 }
 
-.nav-menu {
-    display: flex;
-    gap: 50px;    justify-content: center;}
+.jm-img-header{
+  height: 50px;
+}
 
 .nav-menu a {
     color: rgb(255, 255, 255);
-    text-decoration: none;
     font-size: 18px;
     font-weight: 400;
-    scroll-behavior: smooth;
 }
 
 .nav-menu a:hover {
-    color: #000; 
+    color: #ffffff; 
+}
+
+.jm-hamburguesa{
+  background-color: white !important;
+  border: 1px solid transparent !important;
+  padding: 5px !important;
+}
+
+@media (min-width:991px) {
+  .jm-ajusteWeb{
+    justify-content: end !important;
+  }
 }
 
 /* Ajusta el contenido para no superponerse al header */
@@ -37,17 +52,14 @@ body {
     padding-top: 80px; 
 }
 
-.logoEmpresaMinimalista {
-    max-height: 85px; 
-    margin-right: 50px;
-  }
+
 
 /* Contenedor del swiper */
 swiper-container {
     width: 100%;
     height: auto; 
     max-height: 960px; 
-    margin: 0 auto; 
+    margin: 0 auto;
   }
   
   /* Estilos para las imágenes dentro del swiper */
@@ -58,24 +70,7 @@ swiper-container {
     object-fit: contain; 
     border-radius: 10px; 
   }
-  
-  /* Opcional: Estilos para las flechas de navegación */
-  .swiper-button-next, .swiper-button-prev {
-    color: #fff; 
-    background-color: rgba(0, 0, 0, 0.5); 
-    border-radius: 50%; 
-    padding: 10px; 
-  }
-  
-  /* Opcional: Estilos para las bolitas de paginación */
-  .swiper-pagination-bullet {
-    background: #00aaff; 
-  }
-  
-  .swiper-pagination-bullet-active {
-    background: #fff; 
-  }
-  
+ 
 /* Estilos para el contenedor de la imagen */
 
 .image-container {
@@ -99,7 +94,6 @@ swiper-container {
     border-radius: 50px; 
     text-align: center; 
     width: auto; 
-    
   }
 
   .text-overlay p {
@@ -107,17 +101,10 @@ swiper-container {
     margin-top: 25px;
     text-align:center;
     font-weight:bold;
-
     color: #fff;
-  
   }
   
-  /* Para textos responsivos en pantallas más pequeñas */
-  @media (max-width: 768px) {
-    .text-overlay {
-      font-size: 18px;
-    }
-  }
+  
   
 /* Estilos para el botón */
 .btn {
@@ -210,7 +197,6 @@ swiper-container {
   background-color: #333;
   color: white;
   padding: 40px 20px;
-  height: 740px;
   
 }
 
@@ -334,4 +320,140 @@ swiper-container {
 
 .redesSociales a:hover {
   color: #fff; 
+}
+
+/* Estilos responsivos */
+
+/* Header */
+@media (max-width: 768px) {
+  .nav-menu {
+      gap: 30px; /* Reduce el espacio entre los elementos */
+  }
+
+  .nav-menu a {
+      font-size: 16px; /* Reduce el tamaño de la fuente */
+  }
+
+  
+}
+
+@media (max-width: 480px) {
+  .header-container {
+      flex-direction: column; /* Apila el logo y el menú en lugar de alinearlos horizontalmente */
+  }
+
+  
+
+  .nav-menu {
+      flex-direction: column; /* Apila los elementos del menú verticalmente */
+      gap: 10px;
+  }
+
+  .nav-menu a {
+      font-size: 14px; /* Reduce el tamaño de la fuente */
+  }
+}
+
+/* swipper */
+@media (max-width: 768px) {
+  .text-overlay {
+      font-size: 48px;
+      padding: 15px;
+      border-radius: 40px;
+  }
+
+  .text-overlay p {
+      font-size: 1.5rem;
+  }
+
+  .btn {
+      font-size: 22px;
+      padding: 8px 16px;
+      width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  swiper-container {
+    padding-top: 10px;
+  }
+
+  .text-overlay {
+      font-size: 18px;
+      padding: 10px;
+      border-radius: 30px;
+  }
+
+  .text-overlay p {
+      font-size: 0.8rem;
+      margin-top: 12.5px;
+  }
+
+  .btn {
+      font-size: 18px;
+      padding: 6px 12px;
+      width: 125px;
+  }
+}
+
+/* Acerca de nosotros */
+
+@media (max-width: 768px) {
+
+  .about-us-section {
+    padding-top: 80px;
+  }
+
+  .about-us-container {
+    flex-direction: 2 column;
+    padding: 20px;
+  }
+
+  .about-text {
+    margin-left: 0;
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .about-text h1 {
+    font-size: 36px;
+  }
+
+  .about-text p {
+    font-size: 18px;
+  }
+
+  .about-image img {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .about-us-section {
+    padding-top: 20px;
+  }
+
+  .about-us-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .about-text h1 {
+    font-size: 28px;
+  }
+
+  .about-text p {
+    font-size: 16px;
+  }
+
+  .about-image {
+    display: none;
+  }
+
+  .about-image img {
+    display: none;
+  }
+
 }

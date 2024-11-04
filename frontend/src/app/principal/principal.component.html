@@ -1,6 +1,6 @@
 <div class="page">
     <div id="home">
-        <header class="main-header">
+        <!-- <header class="main-header">
 
             <div class="header-container">
                 <img src="assets\images\logo.png" alt="Logo de la empresa minimalista" class="logoEmpresaMinimalista">
@@ -11,7 +11,34 @@
                     <a (click)="toContacto()">CONTACTANOS</a>
                 </nav>
             </div>
-        </header>
+        </header> -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary main-header">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="assets\images\logo.png" alt="Logo de la empresa minimalista"
+                        class="img-fluid jm-img-header"></a>
+                <button id="menu-movil" class="navbar-toggler jm-hamburguesa" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse jm-ajusteWeb" id="navbarNav">
+                    <ul class="navbar-nav nav-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0)" (click)="toInicio()">INICIO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0)" (click)="toNosotros()">SOBRE NOSOTROS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0)" (click)="toServicios()">SERVICIOS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0)" (click)="toContacto()">CONTACTANOS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <div id="inicio" class="inicio">
             <swiper-container autoplay="true" loop="true" pagination="false" navigation="false" speed="1800"
                 loopPreventsSliding="true">
@@ -69,13 +96,13 @@
                     </div>
                     <div class="servicioItem">
                         <img src="\assets\images\lavadoInterior.jpg" alt="Lavado Interior">
-                        <h3>Lavado Interior</h3>                        
+                        <h3>Lavado Interior</h3>
                     </div>
                     <div class="servicioItem">
                         <img src="\assets\images\detalladoCarro.jpg" alt="Detallado de Carro">
                         <h3>Detallado de Carro</h3>
                     </div>
-                    
+
                 </div>
                 <div class="pieServicio">
                     <p>
@@ -83,10 +110,10 @@
                     </p>
                     <a href="/home-inicio-registro" class="btn">UNETENOS</a>
                 </div>
-                
+
             </div>
         </div>
-
+        
         <div id="contacto" class="seccionContacto">
             <div class="contactoContainer">
                 <div class="contactoText">
