@@ -12,9 +12,11 @@ app.use(cors({
     origin: 'http://localhost:4200'
 }));
 
+app.listen(3000, () => {
+    console.log('Servidor escuchando en el puerto 3000');
+});
+
 let verificationCodes = {}; // Almacenar los códigos de verificación temporalmente
-
-
 
 // Ruta para enviar el código de verificación
 app.post('/send_code', (req, res) => {
@@ -117,6 +119,93 @@ app.post('/login', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log('Servidor escuchando en el puerto 3000');
+
+
+
+// Ruta para agregar un vehículo a un usuario
+app.post('/add-vehicle', (req, res) => {
+    console.log(req.body); // Para depuración
+    const { id_vehiculo, id_usuario, marca, modelo, placa, color } = req.body;
+
+    // Validación de campos obligatorios
+    if (!id_vehiculo || !id_usuario || !marca || !modelo || !placa || !color) {
+        return res.status(400).json({ error: 'Todos los campos son requeridos' });
+    }
+
+    const query = 'INSERT INTO vehiculos (id_vehiculo, id_usuario, marca, modelo, placa, color) VALUES (?, ?, ?, ?, ?, ?)';
+    db.query(query, [id_vehiculo, id_usuario, marca, modelo, placa, color], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+        res.status(201).json({ message: 'Vehículo agregado exitosamente', vehicleId: id_vehiculo });
+    });
+});
+
+app.put('/update-vehicle', (req, res) => {
+    console.log(req.body); // Para depuración
+    console.log("entro"); // Para depuración
+    const { id_vehiculo, marca, modelo, placa, color } = req.body;
+
+    // Validación de campos obligatorios
+    if (!id_vehiculo || !marca || !modelo || !placa || !color) {
+        return res.status(400).json({ error: 'Todos los campos son requeridos' });
+    }
+
+    const query = 'UPDATE vehiculos SET marca = ?, modelo = ?, placa = ?, color = ? WHERE id_vehiculo = ?';
+    db.query(query, [marca, modelo, placa, color, id_vehiculo], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error interno del servidor' });
+        }
+        if (results.affectedRows === 0) {
+            return res.status(404).json({ error: 'Vehículo no encontrado' });
+        }
+        res.status(200).json({ message: 'Vehículo actualizado exitosamente' });
+    });
+});
+
+app.delete('/delete-vehicle', (req, res) => {
+    console.log(req.body); // Para depuración
+    console.log("entro"); // Para depuración
+    const { id_vehiculo } = req.body;
+
+    // Validación de campo obligatorio
+    if (!id_vehiculo) {
+        return res.status(400).json({ error: 'El ID del vehículo es requerido.' });
+    }
+
+    const query = 'DELETE FROM Vehiculos WHERE id_vehiculo = ?';
+    db.query(query, [id_vehiculo], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error interno del servidor al eliminar el vehículo.' });
+        }
+
+        if (results.affectedRows === 0) {
+            return res.status(404).json({ error: 'Vehículo no encontrado.' });
+        }
+
+        res.status(200).json({ message: 'Vehículo eliminado exitosamente' });
+    });
+});
+
+
+app.get('/vehicles/:id_usuario', (req, res) => {
+    const id_usuario = req.params.id_usuario;
+
+    // Verificar que el id_usuario esté presente
+    if (!id_usuario) {
+        return res.status(400).json({ error: 'ID de usuario es requerido' });
+    }
+
+    const query = 'SELECT * FROM vehiculos WHERE id_usuario = ?';
+    db.query(query, [id_usuario], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error interno del servidor' });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ message: 'No se encontraron vehículos para este usuario' });
+        }
+
+        res.status(200).json({ vehicles: results });
+    });
 });
