@@ -1,0 +1,66 @@
+<!-- perfil-usuario.component.html -->
+<div class="registrarVehiculo">
+  <h1>Mis Vehiculos</h1>
+  <p>
+    En este espacio podras administrar tus vehiculos.
+    Puedes registrar un nuevo vehiculo, editar o eliminar los que ya tienes registrados.
+  </p>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Añadir nuevo vehiculo
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Añadir vehiculo</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #vehiculoForm="ngForm" (ngSubmit)="onSubmit(vehiculoForm)">
+            <div class="mb-3 form-group">
+              <label for="marca" class="col-form-label">Marca:</label>
+              <input type="text" class="form-control" id="modelo" ngModel required>
+            </div>
+            <div class="mb-3 form-group">
+              <label for="modelo" class="col-form-label">Modelo:</label>
+              <input type="text" class="form-control" id="modelo" ngModel required>
+            </div>
+            <div class="mb-3 form-group">
+              <label for="color" class="col-form-label">Color:</label>
+              <input type="text" class="form-control" id="color" ngModel required>
+            </div>
+            <div class="mb-3 form-group">
+              <label for="placa" class="col-form-label">Placa:</label>
+              <input type="text" class="form-control" id="placa" ngModel required>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary">Añadir</button>
+            </div>
+          </form>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="cards-container mt-4">
+    <div *ngFor="let vehiculo of vehiculos" class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ vehiculo.marca }} {{ vehiculo.modelo }}</h5>
+        <p class="card-text">Color: {{ vehiculo.color }}</p>
+        <p class="card-text">Placa: {{ vehiculo.placa }}</p>
+      </div>
+      <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+  </div>
+
+</div>

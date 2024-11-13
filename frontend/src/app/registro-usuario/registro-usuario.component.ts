@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -18,7 +19,10 @@ export class RegistroUsuarioComponent {
     tipo_usuario: ''
   };
 
-  constructor(private http: HttpClient, public dialogRef?: MatDialogRef<RegistroUsuarioComponent>) {}
+  constructor(
+    private http: HttpClient, 
+    private router: Router, 
+    public dialogRef?: MatDialogRef<RegistroUsuarioComponent>) {}
 
   onSubmit(form: NgForm) {
     if (form.valid) {
@@ -29,6 +33,7 @@ export class RegistroUsuarioComponent {
             alert('Usuario registrado correctamente');
             this.dialogRef?.close();  // Cerrar el modal después de un registro exitoso
             form.resetForm();  // Reiniciar el formulario después del envío
+            this.router.navigate(['/sistema/perfil-usuario']); 
           },
           error => {
             console.error('Error al registrar usuario:', error);

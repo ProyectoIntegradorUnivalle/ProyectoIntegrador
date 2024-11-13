@@ -4,6 +4,10 @@ import { InicioUsuarioComponent } from './inicio-usuario/inicio-usuario.componen
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
 import { HomeInicioComponent } from './home-inicio/home-inicio.component';
 import { PrincipalComponent } from './principal/principal.component';
+import { SistemaComponent } from './sistema/sistema.component';
+import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
+import { RegistrarVehiculoComponent } from './registrar-vehiculo/registrar-vehiculo.component';
+import { AgendarCitaComponent } from './agendar-cita/agendar-cita.component';
 
 const routes: Routes = [
   {
@@ -21,8 +25,27 @@ const routes: Routes = [
   {
     path: "registro-usuario",
     component: RegistroUsuarioComponent
-  }
+  },
+  {
+    path: "sistema",
+    component: SistemaComponent,
+    children: [
+      {
+        path: "perfil-usuario",
+        component: PerfilUsuarioComponent
+      },
+      {
+        path: "registrar-vehiculo",
+        component: RegistrarVehiculoComponent
+      },
+      {
+        path: "agendar-cita",
+        component: AgendarCitaComponent
+      }
+    ]
+  },
   
+
 ];
 
 @NgModule({

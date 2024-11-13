@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -14,7 +15,11 @@ export class InicioUsuarioComponent {
     password: '',
   };
 
-  constructor(private http: HttpClient, public dialogRef?: MatDialogRef<InicioUsuarioComponent>) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router, 
+    public dialogRef?: MatDialogRef<InicioUsuarioComponent>    
+  ) {}
 
     onSubmit(form: NgForm) {
       if (form.valid) {
@@ -25,7 +30,8 @@ export class InicioUsuarioComponent {
             console.log('Respuesta del servidor:', response);
             alert('inicio de sesión exitoso');
             this.dialogRef?.close();  
-            form.resetForm();  
+            form.resetForm();
+            this.router.navigate(['/sistema/perfil-usuario']);  
           },
           error => {
             console.error('Error al inciar sesion:', error);

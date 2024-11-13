@@ -13,6 +13,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {MatDialogModule} from '@angular/material/dialog';
 import { PrincipalComponent } from './principal/principal.component';
 import { OlvidarFormularioComponent } from './olvidar-formulario/olvidar-formulario.component';
+import { SistemaComponent } from './sistema/sistema.component';
+import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
+import { RegistrarVehiculoComponent } from './registrar-vehiculo/registrar-vehiculo.component';
+import { AgendarCitaComponent } from './agendar-cita/agendar-cita.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { OlvidarFormularioComponent } from './olvidar-formulario/olvidar-formula
     InicioUsuarioComponent,
     HomeInicioComponent,
     PrincipalComponent,
-    OlvidarFormularioComponent
+    OlvidarFormularioComponent,
+    SistemaComponent,
+    PerfilUsuarioComponent,
+    RegistrarVehiculoComponent,
+    AgendarCitaComponent
 
   ],
   imports: [
