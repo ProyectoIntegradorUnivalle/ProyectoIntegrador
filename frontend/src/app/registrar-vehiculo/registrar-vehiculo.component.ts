@@ -52,6 +52,7 @@ export class RegistrarVehiculoComponent implements OnInit {
             alert('Vehículo registrado correctamente');
             this.cargarVehiculos();
             form.resetForm();
+            this.cargarVehiculos();
             this.errorMessage = null;
           },
           error => {

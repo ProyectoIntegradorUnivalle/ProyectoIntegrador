@@ -144,15 +144,15 @@ app.post('/add-vehicle', (req, res) => {
 app.put('/update-vehicle', (req, res) => {
     console.log(req.body); // Para depuración
     console.log("entro"); // Para depuración
-    const { id_vehiculo, marca, modelo, placa, color } = req.body;
+    const { marca, modelo, color, placa } = req.body;
 
     // Validación de campos obligatorios
-    if (!id_vehiculo || !marca || !modelo || !placa || !color) {
+    if (!marca || !modelo || !color || !placa) {
         return res.status(400).json({ error: 'Todos los campos son requeridos' });
     }
 
-    const query = 'UPDATE vehiculos SET marca = ?, modelo = ?, placa = ?, color = ? WHERE id_vehiculo = ?';
-    db.query(query, [marca, modelo, placa, color, id_vehiculo], (err, results) => {
+    const query = 'UPDATE vehiculos SET marca = ?, modelo = ?, color = ? WHERE placa = ?';
+    db.query(query, [marca, modelo, color, placa], (err, results) => {
         if (err) {
             return res.status(500).json({ error: 'Error interno del servidor' });
         }
@@ -166,15 +166,15 @@ app.put('/update-vehicle', (req, res) => {
 app.delete('/delete-vehicle', (req, res) => {
     console.log(req.body); // Para depuración
     console.log("entro"); // Para depuración
-    const { id_vehiculo } = req.body;
+    const { placa } = req.body;
 
     // Validación de campo obligatorio
-    if (!id_vehiculo) {
-        return res.status(400).json({ error: 'El ID del vehículo es requerido.' });
+    if (!placa) {
+        return res.status(400).json({ error: 'La placa del vehículo es requerida.' });
     }
 
-    const query = 'DELETE FROM Vehiculos WHERE id_vehiculo = ?';
-    db.query(query, [id_vehiculo], (err, results) => {
+    const query = 'DELETE FROM vehiculos WHERE placa = ?';
+    db.query(query, [placa], (err, results) => {
         if (err) {
             return res.status(500).json({ error: 'Error interno del servidor al eliminar el vehículo.' });
         }
