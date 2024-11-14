@@ -50,7 +50,7 @@ export class RegistrarVehiculoComponent implements OnInit {
           response => {
             console.log('Respuesta del servidor:', response);
             alert('Vehículo registrado correctamente');
-            this.vehiculos.push(response);
+            this.cargarVehiculos();
             form.resetForm();
             this.errorMessage = null;
           },
@@ -63,4 +63,24 @@ export class RegistrarVehiculoComponent implements OnInit {
       this.errorMessage = 'Por favor, completa todos los campos correctamente';
     }
   }
+
+  eliminarVehiculo(placa: string): void {
+    if (confirm('¿Estás seguro de que deseas eliminar este vehículo?')) {
+      this.http.delete('http://localhost:3000/delete-vehicle', { body: { placa } })
+        .subscribe(
+          response => {
+            console.log('Vehículo eliminado:', response);
+            alert('Vehículo eliminado correctamente');
+            this.cargarVehiculos();
+          },
+          error => {
+            console.error('Error al eliminar vehículo:', error);
+            this.errorMessage = 'Ocurrió un error al eliminar el vehículo';
+          }
+        );
+    }
+  }
+
+  
+
 }

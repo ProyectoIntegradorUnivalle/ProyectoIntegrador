@@ -75,8 +75,8 @@
         <li class="list-group-item">Placa: {{ vehiculo.placa }}</li>
       </ul>
       <div class="card-body">
-        <a href="#" class="card-link">Editar</a>
-        <a href="#" class="card-link">Eliminar</a>
+        <button type="button" class="btn btn-primary">Editar</button>
+        <button type="submit" class="btn btn-danger" (click)="eliminarVehiculo(vehiculo.placa)">Eliminar</button>
       </div>
     </div>
   </div>
