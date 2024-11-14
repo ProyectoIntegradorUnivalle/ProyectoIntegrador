@@ -30,6 +30,7 @@ export class RegistroUsuarioComponent {
         .subscribe(
           response => {
             console.log('Respuesta del servidor:', response);
+            localStorage.setItem('id_usuario', this.usuario.id_usuario);
             alert('Usuario registrado correctamente');
             this.dialogRef?.close();  // Cerrar el modal después de un registro exitoso
             form.resetForm();  // Reiniciar el formulario después del envío

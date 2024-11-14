@@ -125,19 +125,19 @@ app.post('/login', (req, res) => {
 // Ruta para agregar un vehículo a un usuario
 app.post('/add-vehicle', (req, res) => {
     console.log(req.body); // Para depuración
-    const { id_vehiculo, id_usuario, marca, modelo, placa, color } = req.body;
+    const {id_usuario, marca, modelo, color, placa } = req.body;
 
     // Validación de campos obligatorios
-    if (!id_vehiculo || !id_usuario || !marca || !modelo || !placa || !color) {
+    if (!id_usuario || !marca || !modelo || !color || !placa) {
         return res.status(400).json({ error: 'Todos los campos son requeridos' });
     }
 
-    const query = 'INSERT INTO vehiculos (id_vehiculo, id_usuario, marca, modelo, placa, color) VALUES (?, ?, ?, ?, ?, ?)';
-    db.query(query, [id_vehiculo, id_usuario, marca, modelo, placa, color], (err, results) => {
+    const query = 'INSERT INTO vehiculos (id_usuario, marca, modelo, color, placa) VALUES (?, ?, ?, ?, ?)';
+    db.query(query, [id_usuario, marca, modelo, color, placa], (err, results) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.status(201).json({ message: 'Vehículo agregado exitosamente', vehicleId: id_vehiculo });
+        res.status(201).json({ message: 'Vehículo agregado exitosamente', placa: placa });
     });
 });
 
@@ -190,6 +190,7 @@ app.delete('/delete-vehicle', (req, res) => {
 
 app.get('/vehicles/:id_usuario', (req, res) => {
     const id_usuario = req.params.id_usuario;
+    console.log(id_usuario); // Para depuración
 
     // Verificar que el id_usuario esté presente
     if (!id_usuario) {

@@ -28,6 +28,7 @@ export class InicioUsuarioComponent {
         .subscribe(
           response => {
             console.log('Respuesta del servidor:', response);
+            localStorage.setItem('id_usuario', this.usuario.id_usuario);
             alert('inicio de sesión exitoso');
             this.dialogRef?.close();  
             form.resetForm();
