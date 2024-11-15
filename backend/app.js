@@ -202,11 +202,6 @@ app.get('/vehicles/:id_usuario', (req, res) => {
         if (err) {
             return res.status(500).json({ error: 'Error interno del servidor' });
         }
-
-        if (results.length === 0) {
-            return res.status(404).json({ message: 'No se encontraron vehículos para este usuario' });
-        }
-
         res.status(200).json({ vehicles: results });
     });
 });
