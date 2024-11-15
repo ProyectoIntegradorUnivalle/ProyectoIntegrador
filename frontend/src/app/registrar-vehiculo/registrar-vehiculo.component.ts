@@ -52,7 +52,7 @@ export class RegistrarVehiculoComponent implements OnInit {
             alert('Vehículo registrado correctamente');
             this.cargarVehiculos();
             form.resetForm();
-            this.cargarVehiculos();
+            
             this.errorMessage = null;
           },
           error => {
@@ -79,6 +79,31 @@ export class RegistrarVehiculoComponent implements OnInit {
             this.errorMessage = 'Ocurrió un error al eliminar el vehículo';
           }
         );
+    }
+  }
+
+  update(form: NgForm) {
+    if (form.valid) {
+      console.log('Formulario:', form.value);
+      const vehiculo = { ...form.value };
+      this.http.put('http://localhost:3000/update-vehicle', vehiculo)
+        .subscribe(
+          response => {
+            console.log('Respuesta del servidor:', response);
+            alert('Vehículo editado correctamente');
+            this.cargarVehiculos();
+            form.resetForm();
+            
+            this.errorMessage = null;
+          },
+          error => {
+            console.log('Entro');
+            console.error('Error al registrar vehículo:', error);
+            this.errorMessage = 'Ocurrió un error al registrar el vehículo';
+          }
+        );
+    } else {
+      this.errorMessage = 'Por favor, completa todos los campos correctamente';
     }
   }
 
