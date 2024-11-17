@@ -303,3 +303,21 @@ app.get('/get-servicios', (req, res) => {
     });
 });
 
+app.get('/placas/:id_usuario', (req, res) => {
+    const id_usuario = req.params.id_usuario;
+    console.log(id_usuario); // Para depuración
+
+    // Verificar que el id_usuario esté presente
+    if (!id_usuario) {
+        return res.status(400).json({ error: 'ID de usuario no se encontro' });
+    }
+
+    const query = 'SELECT placa FROM vehiculos WHERE id_usuario = ?';
+    db.query(query, [id_usuario], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error interno del servidor' });
+        }
+        res.status(200).json({ placas: results });
+    });
+});
+
