@@ -284,3 +284,22 @@ app.get('/agendamientos/:id_usuario', (req, res) => {
         res.status(200).json({ agendamientos: results });
     });
 });
+
+app.get('/get-servicios', (req, res) => {
+    const query = 'SELECT * FROM servicios';  // Consulta para obtener todos los servicios de la tabla
+
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error('Error al obtener los servicios:', err);
+            return res.status(500).json({ error: 'Error en la base de datos' });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ message: 'No se encontraron servicios' });
+        }
+
+        // Devuelve los servicios como una respuesta JSON
+        res.status(200).json(results);
+    });
+});
+
