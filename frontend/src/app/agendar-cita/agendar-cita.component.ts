@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AgendarCitaComponent implements OnInit{
   vehiculos: any[] = [];
+  servicios: any[] = [];
   vehiculo = {
     marca: '',
     modelo: '',
@@ -22,6 +23,7 @@ export class AgendarCitaComponent implements OnInit{
   ) {}
   ngOnInit(): void {
     this.cargarVehiculos();
+    this.cargarServicios();
   }
   cargarVehiculos(): void {
     const id_usuario = localStorage.getItem('id_usuario');
@@ -35,5 +37,18 @@ export class AgendarCitaComponent implements OnInit{
         }
       );
     }
+  }
+  cargarServicios(): void {
+    this.http.get<any[]>('http://localhost:3000/get-servicios').subscribe(
+      (data: any) => {
+        this.servicios = data;
+      },
+      error => {
+        console.error('Error al obtener los servicios:', error);
+      }
+    );
+  }
+  onSubmit(form: NgForm) {
+    console.log('Hola');
   }
 }
