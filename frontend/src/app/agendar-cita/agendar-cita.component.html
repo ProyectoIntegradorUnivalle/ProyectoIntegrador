@@ -26,35 +26,30 @@
                 <ul class="list-group">
                   <li *ngFor="let servicio of servicios" class="list-group-item">
                     <input class="form-check-input me-1" type="checkbox" [value]="servicio.id"
-                      [id]="'servicio' + servicio.id">
+                      [id]="'servicio' + servicio.id" (change)="onServicioChange($event, servicio.id)">
                     <label class="form-check-label" [for]="'servicio' + servicio.id">{{ servicio.nombre }}</label>
                   </li>
                 </ul>
               </div>
               <div class="cards-container mt-4">
                 <h2>Seleccione el vehiculo</h2>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Menu de placas</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedPlaca" name="placa" required>
+                  <option value="" disabled selected>Seleccione una placa</option>
+                  <option *ngFor="let placa of placas" [value]="placa.placa">{{ placa.placa }}</option>
                 </select>
               </div>
               <div class="agendaDia">
                 <h2>Seleccione el dia</h2>
-                <input type="date">
-                <input type="time" id="tiempo">
+                <input type="date" [(ngModel)]="selectedFecha" name="fecha" required>
+                <input type="time" id="tiempo" [(ngModel)]="selectedHora" name="hora" required>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="submit" class="btn btn-primary submit-button" [disabled]="citaForm.invalid"
-                  [ngClass]="{'disabled-button': citaForm.invalid, 'active-button': citaForm.valid}"
-                  data-bs-dismiss="modal">Añadir</button>
+                  [ngClass]="{'disabled-button': citaForm.invalid, 'active-button': citaForm.valid}">Agendar</button>
               </div>
             </form>
           </div>
-
-
         </div>
       </div>
     </div>
