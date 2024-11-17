@@ -56,8 +56,9 @@ export class RegistrarVehiculoComponent implements OnInit {
             this.errorMessage = null;
           },
           error => {
-            console.error('Error al registrar vehículo:', error);
+            
             this.errorMessage = 'Ocurrió un error al registrar el vehículo';
+            alert('Este vehiculo ya se encuentra registrado');
           }
         );
     } else {
