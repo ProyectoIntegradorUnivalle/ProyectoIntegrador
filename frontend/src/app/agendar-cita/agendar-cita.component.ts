@@ -118,6 +118,7 @@ export class AgendarCitaComponent implements OnInit{
         response => {
           console.log('Respuesta del servidor:', response);
           alert('Cita agendada correctamente');
+          this.cargarAgendamientos();
           form.resetForm();
           this.selectedServicios = [];
           this.selectedPlaca = '';
