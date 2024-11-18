@@ -3,7 +3,7 @@
     <h1>Mis citas</h1>
     <p>
       En este espacio podras administrar tus citas.
-      Puedes agendar una nueva cita, editar o eliminar las que ya tienes agendadas.
+      Puedes agendar una nueva cita y ver las que ya tienes agendadas.
     </p>
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -53,5 +53,20 @@
         </div>
       </div>
     </div>
+
+    <div class="cards-container mt-4">
+      <h2>Mis citas agendadas</h2>
+      <div *ngFor="let cita of agendamientos" class="card my-3" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Cita con placa: {{ cita.placa }}</h5>
+          <!-- Aplicando DatePipe para mostrar solo la fecha -->
+          <p class="card-text">
+            Fecha: {{ cita.fecha_agendada | date:'yyyy-MM-dd' }} | Hora: {{ cita.hora_agendada }}
+          </p>
+          
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

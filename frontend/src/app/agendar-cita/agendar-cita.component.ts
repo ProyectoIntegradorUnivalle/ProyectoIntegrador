@@ -15,6 +15,7 @@ export class AgendarCitaComponent implements OnInit{
   selectedPlaca: string = '';
   selectedFecha: string = '';
   selectedHora: string = '';
+  agendamientos: any[] = [];
  
   constructor(
     private http: HttpClient, 
@@ -23,6 +24,7 @@ export class AgendarCitaComponent implements OnInit{
   ngOnInit(): void {
     this.cargarServicios();
     this.cargarPlacas();
+    this.cargarAgendamientos();
   }
   
   cargarServicios(): void {
@@ -35,6 +37,21 @@ export class AgendarCitaComponent implements OnInit{
       }
     );
   }
+
+  cargarAgendamientos(): void {
+    const id_usuario = localStorage.getItem('id_usuario');
+    if (id_usuario) {
+      this.http.get<any[]>(`http://localhost:3000/agendamientos/${id_usuario}`).subscribe(
+        (data: any) => {
+          this.agendamientos = data.agendamientos;
+        },
+        error => {
+          console.error('Error al obtener los agendamientos:', error);
+        }
+      );
+    }
+  }
+
   cargarPlacas(): void {
     const id_usuario = localStorage.getItem('id_usuario');
     if (id_usuario) {
