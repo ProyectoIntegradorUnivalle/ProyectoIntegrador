@@ -48,14 +48,23 @@ export class AgendarCitaComponent implements OnInit{
       );
     }
   }
+  
 
   onServicioChange(event: any, servicioId: number): void {
+    // Verificar si el servicioId es válido
+    if (!servicioId) {
+      console.error('Servicio ID inválido:', servicioId);
+      return;
+    }
+  
+    // Añadir o eliminar el servicio según el checkbox
     if (event.target.checked) {
       this.selectedServicios.push(servicioId);
     } else {
       this.selectedServicios = this.selectedServicios.filter(id => id !== servicioId);
     }
-    console.log(this.selectedServicios); // Para depuración
+  
+    console.log('Servicios seleccionados:', this.selectedServicios); // Para depuración
   }
 
   onSubmit(form: NgForm) {

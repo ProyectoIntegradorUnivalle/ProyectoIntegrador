@@ -25,9 +25,9 @@
                 <h2>Seleccione los servicios</h2>
                 <ul class="list-group">
                   <li *ngFor="let servicio of servicios" class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" [value]="servicio.id"
-                      [id]="'servicio' + servicio.id" (change)="onServicioChange($event, servicio.id)">
-                    <label class="form-check-label" [for]="'servicio' + servicio.id">{{ servicio.nombre }}</label>
+                    <input class="form-check-input me-1" type="checkbox" [value]="servicio.id_servicio"
+                      [id]="'servicio' + servicio.id_servicio" (change)="onServicioChange($event, servicio.id_servicio)">
+                    <label class="form-check-label" [for]="'servicio' + servicio.id_servicio">{{ servicio.nombre }}</label>
                   </li>
                 </ul>
               </div>
