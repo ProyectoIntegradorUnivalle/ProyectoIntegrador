@@ -30,6 +30,8 @@ export class PrincipalComponent {
     "NUESTROS PRODCUTOS SON DE ALTA CALIDAD"
   ];
 
+  
+
   toInicio() {
     document.getElementById("inicio")?.scrollIntoView({ behavior: "smooth" })
     document.getElementById("menu-movil")?.click();
