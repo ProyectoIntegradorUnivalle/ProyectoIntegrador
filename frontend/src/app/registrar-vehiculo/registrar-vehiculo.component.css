@@ -47,9 +47,6 @@ p {
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.botonAnadirVehiculo {
     background-color: #038CBA;
     color: white;
 }
@@ -138,7 +135,12 @@ p {
 
 /* Modal */
 .modal-header {
-    background-color: #007bff;
+    background-color: #038CBA;
+    color: #fff;
+}
+
+.modal-header h1{
+    
     color: #fff;
 }
 
@@ -147,9 +149,14 @@ p {
 }
 
 .modal-footer .btn-secondary {
-    background-color: #6c757d;
+    background-color: #333;
     border: none;
-    padding: 10px 20px;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #6c6c6c;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
 }
 
 
