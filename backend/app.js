@@ -127,15 +127,15 @@ app.post('/login', (req, res) => {
 // Ruta para agregar un vehículo a un usuario
 app.post('/add-vehicle', (req, res) => {
     console.log(req.body); // Para depuración
-    const {id_usuario, marca, modelo, color, placa } = req.body;
+    const { id_usuario, marca, modelo, color, placa, foto } = req.body;
 
     // Validación de campos obligatorios
-    if (!id_usuario || !marca || !modelo || !color || !placa) {
+    if (!id_usuario || !marca || !modelo || !color || !placa || !foto) {
         return res.status(400).json({ error: 'Todos los campos son requeridos' });
     }
 
-    const query = 'INSERT INTO vehiculos (id_usuario, marca, modelo, color, placa) VALUES (?, ?, ?, ?, ?)';
-    db.query(query, [id_usuario, marca, modelo, color, placa], (err, results) => {
+    const query = 'INSERT INTO vehiculos (id_usuario, marca, modelo, color, placa, foto) VALUES (?, ?, ?, ?, ?, ?)';
+    db.query(query, [id_usuario, marca, modelo, color, placa, foto], (err, results) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
