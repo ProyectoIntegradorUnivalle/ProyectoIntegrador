@@ -1,5 +1,75 @@
 <!-- perfil-usuario.component.html -->
 <div class="perfilUsuario">
-    <h1>Perfil Usuario</h1>
-    <!-- Contenido del perfil del usuario -->
+  <div class="container">
+    <h1>Perfil de Usuario</h1>
+    <p>Aquí puedes actualizar tu información personal.</p>
+
+    <form #perfilForm="ngForm" (ngSubmit)="actualizarPerfil(perfilForm)">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre:</label>
+        <input
+          type="text"
+          id="nombre"
+          class="form-control"
+          name="nombre"
+          [(ngModel)]="usuario.nombre"
+          required
+        />
+        <div *ngIf="perfilForm.submitted && !perfilForm.form.controls['nombre']?.valid" class="error-message">
+          El nombre es requerido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo electrónico:</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="usuario.email"
+          required
+        />
+        <div *ngIf="perfilForm.submitted && !perfilForm.form.controls['email']?.valid" class="error-message">
+          El correo electrónico es requerido y debe ser válido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono:</label>
+        <input
+          type="text"
+          id="telefono"
+          class="form-control"
+          name="telefono"
+          [(ngModel)]="usuario.telefono"
+          required
+        />
+        <div *ngIf="perfilForm.submitted && !perfilForm.form.controls['telefono']?.valid" class="error-message">
+          El teléfono es requerido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña:</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="usuario.password"
+          required
+          minlength="6"
+        />
+        <div *ngIf="perfilForm.submitted && !perfilForm.form.controls['password']?.valid" class="error-message">
+          La contraseña es requerida y debe tener al menos 6 caracteres.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="perfilForm.invalid">
+        Actualizar información
+      </button>
+    </form>
   </div>
+</div>
+

@@ -6,6 +6,7 @@ const db = require('./db');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const moment = require('moment-timezone');
+const bodyparser = require('body-parser');
 
 
 app.use(express.json());
@@ -121,7 +122,50 @@ app.post('/login', (req, res) => {
     });
 });
 
+//dame un servicio para editar la informacion de un usuario sin tipo de usuario
+app.put('/update-user', (req, res) => {
+    console.log(req.body); // Para depuración
+    console.log("entro"); // Para depuración
+    const { id_usuario, nombre, email, password, telefono } = req.body;
 
+    // Validación de campos obligatorios
+    if (!id_usuario || !nombre || !email || !password || !telefono) {
+        return res.status(400).json({ error: 'Todos los campos son requeridos' });
+    }
+
+    const query = 'UPDATE Usuarios SET nombre = ?, email = ?, password = ?, telefono = ? WHERE id_usuario = ?';
+    db.query(query, [nombre, email, password, telefono, id_usuario], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error interno del servidor' });
+        }
+        if (results.affectedRows === 0) {
+            return res.status(404).json({ error: 'Usuario no encontrado' });
+        }
+        res.status(200).json({ message: 'Usuario actualizado exitosamente' });
+    });
+});
+
+//ruta para cargar informacion de un usuario
+app.get('/usuarios/:id_usuario', async (req, res) => {
+    const id_usuario = req.params.id_usuario;
+    console.log(id_usuario); // Para depuración
+
+    const query = 'SELECT * FROM usuarios WHERE id_usuario = ?';
+
+    db.query(query, [id_usuario], (err, results) => {
+        if (err) {
+            console.error('Error en la consulta:', err);
+            return res.status(500).json({ error: 'Error interno del servidor' });
+        }
+
+        if (results.length > 0) {
+            res.status(200).json(results[0]); // Devuelve solo el primer resultado
+        } else {
+            res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+
+  });
+});
 
 
 // Ruta para agregar un vehículo a un usuario
