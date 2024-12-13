@@ -6,7 +6,18 @@ const db = require('./db');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const moment = require('moment-timezone');
-const bodyparser = require('body-parser');
+const multer = require('./multerConfig');
+
+
+
+//necesito probar el multer para subir una foto y guardarla en la carpeta uploads
+app.post('/upload', multer.single('foto'), (req, res) => {
+    if (req.file) {
+        res.status(200).send('Archivo subido correctamente');
+    } else {
+        res.status(400).send('No se subió ningún archivo');
+    }
+});
 
 
 app.use(express.json());
@@ -169,27 +180,38 @@ app.get('/usuarios/:id_usuario', async (req, res) => {
 
 
 // Ruta para agregar un vehículo a un usuario
-app.post('/add-vehicle', (req, res) => {
-    console.log(req.body); // Para depuración
-    const { id_usuario, marca, modelo, color, placa, foto } = req.body;
-
-    // Validación de campos obligatorios
-    if (!id_usuario || !marca || !modelo || !color || !placa || !foto) {
-        return res.status(400).json({ error: 'Todos los campos son requeridos' });
+app.post('/add-vehicle', multer.single('foto'), (req, res) => {
+    const { id_usuario, marca, modelo, color, placa } = req.body; // Obtener id_usuario y demás datos del cuerpo de la solicitud
+    // Validar datos requeridos
+    if (!id_usuario || !marca || !modelo || !color || !placa || !req.file) {
+        return res.status(400).json({ error: 'Todos los campos son obligatorios, incluida la foto.' });
     }
+    // Ruta del archivo subido
+    const foto = `/uploads/${req.file.filename}`;
+    // Mostrar lo que se enviará a la consulta (para depuración)
+    console.log('Datos recibidos:', { id_usuario, marca, modelo, color, placa, foto });
 
-    const query = 'INSERT INTO vehiculos (id_usuario, marca, modelo, color, placa, foto) VALUES (?, ?, ?, ?, ?, ?)';
+    // Insertar datos en la base de datos
+    const query = `
+        INSERT INTO vehiculos (id_usuario, marca, modelo, color, placa, foto)
+        VALUES (?, ?, ?, ?, ?, ?)
+    `;
     db.query(query, [id_usuario, marca, modelo, color, placa, foto], (err, results) => {
         if (err) {
-            return res.status(500).json({ error: err.message });
+            console.error('Error al guardar el vehículo en la base de datos:', err.message);
+            return res.status(500).json({ error: 'Error al guardar el vehículo en la base de datos', details: err.message });
         }
-        res.status(201).json({ message: 'Vehículo agregado exitosamente', placa: placa });
+        res.status(201).json({ 
+            message: 'Vehículo agregado exitosamente', 
+            data: { id_usuario, marca, modelo, color, placa, foto } 
+        });
     });
 });
 
+
 app.put('/update-vehicle', (req, res) => {
     console.log(req.body); // Para depuración
-    console.log("entro"); // Para depuración
+    
     const { marca, modelo, color, placa } = req.body;
 
     // Validación de campos obligatorios
