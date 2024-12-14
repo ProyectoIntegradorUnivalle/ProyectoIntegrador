@@ -1,3 +1,6 @@
+<head>
+  <meta name="description" content="Administra tus vehículos y citas de manera eficiente con nuestra plataforma. Registra nuevos vehículos, edita información existente y agenda citas fácilmente. Únete hoy y mantén tu auto en perfecto estado.">
+</head>
 <div class="container">
   <div class="agendarCita">
     <h1>Mis citas</h1>
@@ -65,7 +68,7 @@
       <div *ngFor="let cita of agendamientos" class="col-md-4 mb-4" style="width: 18rem;">
         <div class="card h-100">
           <div class="card-body">
-            <h5 class="card-title">Cita con placa: {{ cita.placa }}</h5>
+            <h2 class="card-title">Cita con placa: {{ cita.placa }}</h2>
             <!-- Aplicando DatePipe para mostrar solo la fecha -->
             <p class="card-text">
              <strong> Fecha:</strong> {{ cita.fecha_agendada | date:'yyyy-MM-dd' }} </p>
