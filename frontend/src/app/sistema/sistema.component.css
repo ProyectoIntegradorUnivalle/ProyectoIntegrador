@@ -47,3 +47,9 @@
     margin-bottom: 40px;
 }
 
+.logout {
+    cursor: pointer; 
+    user-select: none; 
+}
+
+

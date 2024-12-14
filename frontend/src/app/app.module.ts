@@ -17,6 +17,8 @@ import { SistemaComponent } from './sistema/sistema.component';
 import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
 import { RegistrarVehiculoComponent } from './registrar-vehiculo/registrar-vehiculo.component';
 import { AgendarCitaComponent } from './agendar-cita/agendar-cita.component';
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -42,9 +44,7 @@ import { AgendarCitaComponent } from './agendar-cita/agendar-cita.component';
   exports: [
     MatDialogModule
   ],
-  providers: [
-    provideAnimationsAsync()
-  ],
+  providers: [provideAnimationsAsync(), AuthService, AuthGuard],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

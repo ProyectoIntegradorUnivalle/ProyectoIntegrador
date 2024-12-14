@@ -8,6 +8,7 @@ import { SistemaComponent } from './sistema/sistema.component';
 import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
 import { RegistrarVehiculoComponent } from './registrar-vehiculo/registrar-vehiculo.component';
 import { AgendarCitaComponent } from './agendar-cita/agendar-cita.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -29,21 +30,25 @@ const routes: Routes = [
   {
     path: "sistema",
     component: SistemaComponent,
+    canActivate: [AuthGuard], // Aplicar el guard de autenticación a la ruta 'sistema'
     children: [
       {
         path: "perfil-usuario",
-        component: PerfilUsuarioComponent
+        component: PerfilUsuarioComponent,
+        canActivate: [AuthGuard] // Aplicar el guard de autenticación a la ruta 'perfil-usuario'
       },
       {
         path: "registrar-vehiculo",
-        component: RegistrarVehiculoComponent
+        component: RegistrarVehiculoComponent,
+        canActivate: [AuthGuard] // Aplicar el guard de autenticación a la ruta 'registrar-vehiculo'
       },
       {
         path: "agendar-cita",
-        component: AgendarCitaComponent
+        component: AgendarCitaComponent,
+        canActivate: [AuthGuard] // Aplicar el guard de autenticación a la ruta 'agendar-cita'
       }
     ]
-  },
+  }
   
 
 ];
