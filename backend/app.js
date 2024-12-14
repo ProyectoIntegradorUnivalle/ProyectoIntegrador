@@ -8,6 +8,7 @@ const crypto = require('crypto');
 const moment = require('moment-timezone');
 const multer = require('./multerConfig');
 
+app.use('/uploads', express.static('uploads'));
 
 
 //necesito probar el multer para subir una foto y guardarla en la carpeta uploads
