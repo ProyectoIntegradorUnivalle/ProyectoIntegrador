@@ -19,6 +19,10 @@ import { RegistrarVehiculoComponent } from './registrar-vehiculo/registrar-vehic
 import { AgendarCitaComponent } from './agendar-cita/agendar-cita.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
+import { AdministradorComponent } from './administrador/administrador.component';
+import { AdminVehiculosComponent } from './admin-vehiculos/admin-vehiculos.component';
+import { AdminUsuariosComponent } from './admin-usuarios/admin-usuarios.component';
+import { AdminAgendamientosComponent } from './admin-agendamientos/admin-agendamientos.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { AuthGuard } from './auth/auth.guard';
     SistemaComponent,
     PerfilUsuarioComponent,
     RegistrarVehiculoComponent,
-    AgendarCitaComponent
+    AgendarCitaComponent,
+    AdministradorComponent,
+    AdminVehiculosComponent,
+    AdminUsuariosComponent,
+    AdminAgendamientosComponent
 
   ],
   imports: [

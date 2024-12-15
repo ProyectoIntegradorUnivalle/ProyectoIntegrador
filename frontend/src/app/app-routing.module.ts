@@ -8,7 +8,13 @@ import { SistemaComponent } from './sistema/sistema.component';
 import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
 import { RegistrarVehiculoComponent } from './registrar-vehiculo/registrar-vehiculo.component';
 import { AgendarCitaComponent } from './agendar-cita/agendar-cita.component';
+import { AdministradorComponent } from './administrador/administrador.component';
+import { AdminUsuariosComponent } from './admin-usuarios/admin-usuarios.component';
+import { AdminVehiculosComponent } from './admin-vehiculos/admin-vehiculos.component';
+import { AdminAgendamientosComponent } from './admin-agendamientos/admin-agendamientos.component';
 import { AuthGuard } from './auth/auth.guard';
+import { UserGuard } from './auth/user.guard'; // Importar el guard de usuario
+import { AdminGuard } from './auth/admin.guard';
 
 const routes: Routes = [
   {
@@ -30,25 +36,47 @@ const routes: Routes = [
   {
     path: "sistema",
     component: SistemaComponent,
-    canActivate: [AuthGuard], // Aplicar el guard de autenticación a la ruta 'sistema'
+    canActivate: [AuthGuard, UserGuard], 
     children: [
       {
         path: "perfil-usuario",
         component: PerfilUsuarioComponent,
-        canActivate: [AuthGuard] // Aplicar el guard de autenticación a la ruta 'perfil-usuario'
+        canActivate: [AuthGuard, UserGuard] 
       },
       {
         path: "registrar-vehiculo",
         component: RegistrarVehiculoComponent,
-        canActivate: [AuthGuard] // Aplicar el guard de autenticación a la ruta 'registrar-vehiculo'
+        canActivate: [AuthGuard, UserGuard] 
       },
       {
         path: "agendar-cita",
         component: AgendarCitaComponent,
-        canActivate: [AuthGuard] // Aplicar el guard de autenticación a la ruta 'agendar-cita'
+        canActivate: [AuthGuard, UserGuard] 
       }
     ]
-  }
+  },
+  {
+    path: "administrador",
+    component: AdministradorComponent,
+    canActivate: [AuthGuard, AdminGuard], 
+    children: [
+      {
+        path: "admin-vehiculos",
+        component: AdminVehiculosComponent,
+        canActivate: [AuthGuard, AdminGuard] 
+      },
+      {
+        path: "admin-agendamientos",
+        component: AdminAgendamientosComponent,
+        canActivate: [AuthGuard, AdminGuard] 
+      },
+      {
+        path: "admin-usuarios",
+        component: AdminUsuariosComponent,
+        canActivate: [AuthGuard, AdminGuard] 
+      }
+    ]
+  },
   
 
 ];

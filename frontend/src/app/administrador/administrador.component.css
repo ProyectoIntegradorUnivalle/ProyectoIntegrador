@@ -1,0 +1,55 @@
+.offcanvas {
+    background-color: #037AB5;
+}
+
+.bg-body-tertiary {
+    background-color: #037AB5 !important;
+}
+
+.offcanvas-body {
+    color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    font-size: 2rem;
+    color: white;
+    margin-right: 0.5rem;
+    
+}
+
+.nav-link {
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #000;
+}
+
+.nav-link.active {
+    color: #000;
+}
+
+
+
+.nav-item {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.logout {
+    cursor: pointer; 
+    user-select: none; 
+}
+
+

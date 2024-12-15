@@ -134,6 +134,28 @@ app.post('/login', (req, res) => {
     });
 });
 
+// Ruta para iniciar sesión de administradores
+app.post('/admin-login', (req, res) => {
+    console.log(req.body); // Para depuración
+    const { id_admin, password } = req.body;
+
+    if (!id_admin || !password) {
+        return res.status(400).json({ error: 'ID de administrador y contraseña son requeridos' });
+    }
+
+    const query = 'SELECT * FROM admins WHERE id_admin = ? AND password = ?';
+    db.query(query, [id_admin, password], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+        if (results.length > 0) {
+            res.status(200).json({ message: 'Inicio de sesión exitoso', tipo_usuario: 'admin' });
+        } else {
+            res.status(400).json({ error: 'ID de administrador o contraseña incorrectos' });
+        }
+    });
+});
+
 //dame un servicio para editar la informacion de un usuario sin tipo de usuario
 app.put('/update-user', (req, res) => {
     console.log(req.body); // Para depuración
