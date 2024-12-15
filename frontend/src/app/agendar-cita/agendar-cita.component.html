@@ -1,5 +1,6 @@
 <head>
-  <meta name="description" content="Administra tus vehículos y citas de manera eficiente con nuestra plataforma. Registra nuevos vehículos, edita información existente y agenda citas fácilmente. Únete hoy y mantén tu auto en perfecto estado.">
+  <meta name="description"
+    content="Administra tus vehículos y citas de manera eficiente con nuestra plataforma. Registra nuevos vehículos, edita información existente y agenda citas fácilmente. Únete hoy y mantén tu auto en perfecto estado.">
 </head>
 <div class="container">
   <div class="agendarCita">
@@ -71,9 +72,11 @@
             <h2 class="card-title">Cita con placa: {{ cita.placa }}</h2>
             <!-- Aplicando DatePipe para mostrar solo la fecha -->
             <p class="card-text">
-             <strong> Fecha:</strong> {{ cita.fecha_agendada | date:'yyyy-MM-dd' }} </p>
+              <strong> Fecha:</strong> {{ cita.fecha_agendada | date:'yyyy-MM-dd' }}
+            </p>
             <p class="card-text">
-              <strong>Hora:</strong> {{ cita.hora_agendada }} </p>
+              <strong>Hora:</strong> {{ cita.hora_agendada }}
+            </p>
 
           </div>
         </div>

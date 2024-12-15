@@ -64,7 +64,7 @@ p {
     font-size: 1rem;
     border-radius: 5px;
     transition: all 0.3s ease-in-out;
-    
+
 }
 
 .btn-primary:hover {
@@ -110,8 +110,9 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; /* Cambiado: Añadido align-items: center para centrar los elementos */
-  }
+    align-items: center;
+    /* Cambiado: Añadido align-items: center para centrar los elementos */
+}
 
 /* Botones secundarios */
 .btn-danger {
@@ -130,8 +131,9 @@ p {
 }
 
 .botonesCartas button {
-    margin: 5px; /* Cambiado: Añadido margen para separar los botones */
-  }
+    margin: 5px;
+    /* Cambiado: Añadido margen para separar los botones */
+}
 
 /* Modal */
 .modal-header {
@@ -139,8 +141,8 @@ p {
     color: #fff;
 }
 
-.modal-header h1{
-    
+.modal-header h1 {
+
     color: #fff;
 }
 

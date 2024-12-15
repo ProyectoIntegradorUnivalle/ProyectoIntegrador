@@ -297,6 +297,20 @@ app.get('/vehicles/:id_usuario', (req, res) => {
     });
 });
 
+// Ruta para obtener todos los vehículos y sus usuarios
+app.get('/userVehicles', (req, res) => {
+    const query = 'SELECT * FROM vehiculos';
+
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error('Error al obtener los vehículos y usuarios:', err);
+            return res.status(500).json({ error: 'Error en la base de datos' });
+        }
+
+        res.status(200).json({ vehicles: results });
+    });
+});
+
 app.post('/add-agendamiento', (req, res) => {
     console.log(req.body); // Para depuración
     const { id_usuario, placa, fecha_agendada, hora_agendada, servicios_ids } = req.body;
@@ -374,6 +388,21 @@ app.get('/agendamientos/:id_usuario', (req, res) => {
     });
 });
 
+// Ruta para obtener todos los agendamientos y sus usuarios
+app.get('/userAgenda', (req, res) => {
+    const query = 'SELECT * FROM agendamientos';
+
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error('Error al obtener los agendamientos y usuarios:', err);
+            return res.status(500).json({ error: 'Error en la base de datos' });
+        }
+
+        res.status(200).json({ agendamientos: results });
+    });
+});
+
+
 app.get('/get-servicios', (req, res) => {
     const query = 'SELECT * FROM servicios';  // Consulta para obtener todos los servicios de la tabla
 
@@ -410,3 +439,21 @@ app.get('/placas/:id_usuario', (req, res) => {
     });
 });
 
+// Ruta para obtener todos los usuarios y la cantidad de vehículos que tienen
+app.get('/usuariosTotales', (req, res) => {
+    const query = `
+        SELECT u.id_usuario, u.nombre, u.email, COUNT(v.placa) AS cantidad_vehiculos
+        FROM usuarios u
+        LEFT JOIN vehiculos v ON u.id_usuario = v.id_usuario
+        GROUP BY u.id_usuario, u.nombre, u.email
+    `;
+
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error('Error al obtener los usuarios y vehículos:', err);
+            return res.status(500).json({ error: 'Error en la base de datos' });
+        }
+
+        res.status(200).json({ usuarios: results });
+    });
+});
